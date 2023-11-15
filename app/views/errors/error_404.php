@@ -1,5 +1,5 @@
 <?php
-defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
+defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 /**
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework
@@ -37,56 +37,84 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>404 Page Not Found</title>
-	<style type="text/css">
-
-	*{
-	    transition: all 0.6s;
-	}
-
-	html {
-	    height: 100%;
-	}
-
-	body{
-	    font-family: 'Lato', sans-serif;
-	    color: #888;
-	    margin: 0;
-	}
-
-	#main{
-	    display: table;
-	    width: 100%;
-	    height: 100vh;
-	    text-align: center;
-	}
-
-	.fof{
-		  display: table-cell;
-		  vertical-align: middle;
-	}
-
-	.fof h1{
-		  font-size: 50px;
-		  display: inline-block;
-		  padding-right: 12px;
-		  animation: type .5s alternate infinite;
-	}
-
-	@keyframes type{
-		  from{box-shadow: inset -3px 0px 0px #888;}
-		  to{box-shadow: inset -3px 0px 0px transparent;}
-	}
-	</style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>404 Not found</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arvo">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<style>
+	.page_404 {
+		padding: 40px 0;
+		background: #fff;
+		font-family: 'Arvo', serif;
+	}
+
+	.page_404 img {
+		width: 100%;
+	}
+
+	.four_zero_four_bg {
+
+		background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+		height: 400px;
+		background-position: center;
+	}
+
+
+	.four_zero_four_bg h1 {
+		font-size: 80px;
+	}
+
+	.four_zero_four_bg h3 {
+		font-size: 80px;
+	}
+
+	.link_404 {
+		color: #fff !important;
+		padding: 10px 20px;
+		background: #39ac31;
+		margin: 20px 0;
+		display: inline-block;
+	}
+
+	.contant_box_404 {
+		margin-top: -50px;
+	}
+
+	body {
+		font-family: 'Arvo', sans-serif;
+	}
+</style>
+
 <body>
-	<div id="main">
-    	<div class="fof">
-	        <h1><?php echo $heading; ?></h1>
-	        <p><?php echo $message; ?></p>
-    	</div>
-	</div>
+	<section class="page_404">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 ">
+					<div class="col-sm-10 col-sm-offset-1  text-center">
+						<div class="four_zero_four_bg">
+							<h1 class="text-center ">404</h1>
+
+
+						</div>
+
+						<div class="contant_box_404">
+							<h3 class="h2">
+								Look like you're lost
+							</h3>
+
+							<p>the page you are looking for not avaible!</p>
+
+							<a href="/" class="link_404">Go to Home</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
+
 </html>
