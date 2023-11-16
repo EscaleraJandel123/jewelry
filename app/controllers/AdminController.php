@@ -38,7 +38,20 @@ class AdminController extends Controller {
     }
     
     public function modify() {
-        $this->call->view('admin/modify');
+        $this->call->model('AdminModel_model');
+        $data['prod'] = $this->AdminModel_model->getInfo();
+        $this->call->view('admin/modify', $data);
+    }
+    public function delete($id)
+    {
+        if(isset($id)){
+            $this->db->table('prod')->where("id", $id)->delete();
+            redirect('/modify');
+        }
+        else{
+            $_SESSION['delete'] = "FAILED";
+            redirect('/modify');
+        }
     }
 }
 ?>

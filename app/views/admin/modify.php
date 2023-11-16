@@ -348,7 +348,7 @@
                 </a>
                 <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="">
+                        <a href="/modify">
                             <i class="bi bi-circle"></i><span>Modify Products</span>
                         </a>
                     </li>
@@ -382,44 +382,63 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Datatables</h5>
-                            <p>Add lightweight datatables to your project with using the <a
-                                    href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple
-                                    DataTables</a> library. Just add <code>.datatable</code> class name to any table you
-                                wish to conver to a datatable</p>
+                            <h5 class="card-title">Modify Products</h5>
 
                             <!-- Table with stripped rows -->
-                            <table class="table datatable">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Id</th>
-                                        <th scope="col">Product Name</th>
-                                        <th scope="col">Category</th>
-                                        <th scope="col">Quantity</th>
-                                        <th scope="col">Start Date</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Brandon Jacob</td>
-                                        <td>Designer</td>
-                                        <td>28</td>
-                                        <td>2016-05-25</td>
-                                        <td><a href="/edit" type="button" class="btn btn-outline-warning">Edit</a></td>
-                                        <td><a href="/delete" type="button" class="btn btn-outline-danger">Delete</a>
-                                        </td>
-                                    </tr>
+                            <div class="table-responsive">
+                                <table class="table datatable">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Product Name</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Quantity</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Prize</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($prod as $pr): ?>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>
+                                                    <?= $pr['name'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $pr['description'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $pr['category'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $pr['quantity'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $pr['image'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $pr['prize'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $pr['date'] ?>
+                                                </td>
+                                                <td><a href="/edit" type="button" class="btn btn-outline-warning">Edit</a>
+                                                </td>
+                                                <td><a href="/delete/<?= $pr['id'] ?>" type="button"
+                                                        class="btn btn-outline-danger">Delete</a>
+                                            </tr>
+                                        <?php endforeach ?>
+                                    </tbody>
+                                </table>
+                            </div>
 
-
-                                </tbody>
-                            </table>
                             <!-- End Table with stripped rows -->
 
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>

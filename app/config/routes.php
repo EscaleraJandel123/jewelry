@@ -60,3 +60,4 @@ $router->get('/products', 'AdminController::products');
 $router->get('/items', 'AdminController::items');
 $router->get('/modify', 'AdminController::modify');
 $router->post('/save', 'AdminController::add');
+$router->get('/delete/(:num)', 'AdminController::delete');
