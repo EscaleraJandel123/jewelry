@@ -3,6 +3,33 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 
 class MainController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->call->model('User_model');
+    }
+    public function login()
+    {
+        $this->call->view('login');
+    }
+    public function register()
+    {
+        $this->call->view('register');
+    }
+    
+    public function create(){
+        $email = $this->io->post('email');
+        $password = $this->io->post('password');
+        // $token = $this->io->post('token');
+        $bind = array(
+            "email" => $email,
+            "password" => password_hash($password,PASSWORD_DEFAULT),
+            // "token" => 'unverified',
+        );
+        $this->db->table('users')->insert($bind);
+        redirect('login');
+    }
+
     public function index()
     {
         $this->call->view('homepage');
@@ -31,3 +58,4 @@ class MainController extends Controller
     
 }
 ?>
+

@@ -289,8 +289,6 @@
                 <!-- Size End -->
             </div>
             <!-- Shop Sidebar End -->
-
-
             <!-- Shop Product Start -->
             <div class="col-lg-9 col-md-12">
                 <div class="row pb-3">

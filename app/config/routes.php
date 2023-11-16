@@ -52,11 +52,10 @@ $router->get('/cart', 'MainController::cart');
 $router->get('/checkout', 'MainController::checkout');
 $router->get('/contact', 'MainController::contact');
 
-$router->post('/upload', 'MainController::upload');
-$router->get('/up', 'MainController::up');
 
 $router->get('/login', 'MainController::login');
 $router->get('/register', 'MainController::register');
+$router->post('/create', 'MainController::create');
 
 
 $router->get('/dashboard', 'AdminController::dashboard');
