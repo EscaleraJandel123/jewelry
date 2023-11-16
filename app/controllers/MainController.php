@@ -7,9 +7,12 @@ class MainController extends Controller
     {
         parent::__construct();
         $this->call->model('User_model');
+        // $this->call->library('auth');
     }
     public function login()
     {
+        // $data = $this->auth->login('jandeleido@gmail.com', '1');
+        // var_dump($data);
         $this->call->view('login');
     }
     public function register()
