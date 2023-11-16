@@ -401,6 +401,7 @@
                                                 <th scope="row">
                                                     <?= $pr['id'] ?>
                                                 </th>
+                                                
                                                 <td>
                                                     <?= $pr['name'] ?>
                                                 </td>
@@ -414,8 +415,8 @@
                                                     <?= $pr['quantity'] ?>
                                                 </td>
                                                 <td>
-                                                    <?= $pr['image'] ?>
-                                                </td>
+                        <img src="<?= BASE_URL .'uploads/' . $pr['image'] ?>" alt="asd" style="max-width: 70px; cursor: pointer;">
+                        </td>
                                                 <td>
                                                     <?= $pr['prize'] ?>
                                                 </td>

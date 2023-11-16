@@ -6,5 +6,6 @@ class Shopmodel_model extends Model {
     {
         return $this->db->table('prod')->get_all();
     }
+
 }
 ?>

@@ -10,25 +10,35 @@ class AdminController extends Controller {
         $data['prod'] = $this->AdminModel_model->getInfo();
         $this->call->view('admin/products',$data);
     }
-    public function add(){
-        $name = $this->io->post('name');
-        $description = $this->io->post('description');
-        $category = $this->io->post('category');
-        $quantity = $this->io->post('quantity');
-        $prize = $this->io->post('prize');
-        // $image = $this->io->post('image');
-        $bind = array(
-            "name" => $name,
-            "description" => $description,
-            "category" => $category,
-            "quantity" => $quantity,
-            "prize" => $prize,
-            // "image" => $image
-        );
-        $this->db->table('prod')->insert($bind);
-        
-        redirect('items');
-    }
+    public function add()
+{
+    $name = $this->io->post('name');
+    $description = $this->io->post('description');
+    $category = $this->io->post('category');
+    $quantity = $this->io->post('quantity');
+    $prize = $this->io->post('prize');
+    
+    // File upload handling
+    $uploadDir = 'uploads/';
+    $uploadedFile = $_FILES['image']['tmp_name'];
+    $imageFileName = uniqid('img_') . '_' . $_FILES['image']['name'];
+    $targetFile = $uploadDir . $imageFileName;
+
+    move_uploaded_file($uploadedFile, $targetFile);
+
+    $bind = array(
+        "name" => $name,
+        "description" => $description,
+        "category" => $category,
+        "quantity" => $quantity,
+        "prize" => $prize,
+        "image" => $imageFileName  // Save the image file name in the database
+    );
+
+    $this->db->table('prod')->insert($bind);
+
+    redirect('items');
+}
 
     public function items() {
         $data['cat'] = $this->AdminModel_model->getCat();
@@ -60,24 +70,43 @@ class AdminController extends Controller {
     }
 
     public function submitedit($id)
+{
+    if(isset($id))
     {
-        if(isset($id))
-        {
-            $name = $this->io->post('name');
+        $name = $this->io->post('name');
         $description = $this->io->post('description');
         $category = $this->io->post('category');
         $quantity = $this->io->post('quantity');
         $prize = $this->io->post('prize');
-        $data = [
+
+        // Check if a new image is uploaded
+        if ($_FILES['image']['size'] > 0) {
+            // File upload handling
+            $uploadDir = 'uploads/';
+            $uploadedFile = $_FILES['image']['tmp_name'];
+            $imageFileName = uniqid('img_') . '_' . $_FILES['image']['name'];
+            $targetFile = $uploadDir . $imageFileName;
+
+            move_uploaded_file($uploadedFile, $targetFile);
+
+            // Update the image field in the database
+            $data['image'] = $imageFileName;
+        }
+
+        $data += [
             "name" => $name,
             "description" => $description,
             "category" => $category,
             "quantity" => $quantity,
             "prize" => $prize,
         ];
+
+        // Update the product data in the database
         $this->db->table('prod')->where("id", $id)->update($data);
+
         redirect('modify');
-        }
     }
+}
+
 }
 ?>

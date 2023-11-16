@@ -389,6 +389,7 @@
                   <thead>
                     <tr>
                       <th scope="col">Id</th>
+                      <th scope="col">Image</th>
                       <th scope="col">Product Name</th>
                       <th scope="col">Description</th>
                       <th scope="col">Category</th>
@@ -401,6 +402,9 @@
                     <?php foreach ($prod as $pr): ?>
                       <tr>
                         <th scope="row">1</th>
+                        <td>
+                        <img src="<?= BASE_URL .'uploads/' . $pr['image'] ?>" alt="asd" style="max-width: 70px; cursor: pointer;">
+                        </td>
                         <td>
                           <?= $pr['name'] ?>
                         </td>
