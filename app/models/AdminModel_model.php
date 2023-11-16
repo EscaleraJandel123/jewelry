@@ -10,5 +10,9 @@ class AdminModel_model extends Model {
     {
         return $this->db->table('cat')->get_all();
     }
+    public function searchInfo($id)
+    {
+        return $this->db->table('prod')->where('id',$id)->get();
+    }
 }
 ?>

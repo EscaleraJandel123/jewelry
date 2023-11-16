@@ -382,7 +382,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Floating Labels Form</h5>
+                            <h5 class="card-title"></h5>
 
                             <!-- Floating Labels Form -->
                             <form class="row g-3" action="/save" method="post" enctype="multipart/form-data"
@@ -390,27 +390,17 @@
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="floatingName" name="name"
-                                            placeholder="Item Name">
+                                            placeholder="Item Name" required>
                                         <label for="floatingName">Item Name</label>
                                     </div>
                                 </div>
-
-
-
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" name="description" placeholder="Description"
-                                            id="floatingTextarea" style="height: 100px;"></textarea>
+                                            id="floatingTextarea" style="height: 100px;" required></textarea>
                                         <label for="floatingTextarea">Item Description</label>
                                     </div>
                                 </div>
-                                <!-- <div class="col-md-2">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="floatingDate" name="itemDate"
-                                            placeholder="Date">
-                                        <label for="floatingDate">Date</label>
-                                    </div>
-                                </div> -->
                                 <div class="col-md-2">
                                     <div class="form-floating mb-3">
                                         <select class="form-select" id="floatingSelect" name="category"
@@ -427,32 +417,30 @@
                                 <div class="col-md-2">
                                     <div class="form-floating">
                                         <input type="number" class="form-control" id="floatingQuantity" name="quantity"
-                                            placeholder="Quantity">
-                                        <label for="floatingQuantity">Quantity</label>
+                                            placeholder="Quantity" required>
+                                        <label for="floatingQuantity"  >Quantity</label>
                                     </div>
                                 </div>
-
                                 <div class="col-md-2">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="floatingPrize" name="prize"
-                                            placeholder="Prize">
-                                        <label for="floatingPrize">Prize</label>
+                                            placeholder="Prize" required>
+                                        <label for="floatingPrize"  >Prize</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image"
-                                        onchange="previewImage()">
+                                        onchange="previewImage()" required >
                                 </div>
                                 <!-- Image Preview -->
-                                <div class="col-md-6" id="imagePreviewContainer" style="display: none;">
+                                <div class="col-md-2" id="imagePreviewContainer" style="display: none;">
                                     <img id="imagePreview" alt="Image Preview"
                                         style="max-width: 100%; max-height: 200px;">
                                 </div>
                                 <!-- End Image Preview -->
                                 <div class="text-center">
-                                    <input class="btn btn-primary" type="submit"
-                                        value="<?= (isset($edit['id'])) ? "Update" : "Submit" ?>">
+                                    <input class="btn btn-primary" type="submit">
                                     <button type="reset" class="btn btn-secondary" onclick="resetForm()">Reset</button>
                                 </div>
                             </form><!-- End floating Labels Form -->
@@ -461,8 +449,6 @@
                 </div>
             </div>
         </section>
-
-
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->

@@ -370,20 +370,15 @@
     </aside><!-- End Sidebar-->
 
     <main id="main" class="main">
-
         <div class="pagetitle">
-            <h1>Data Tables</h1>
-
+            <h1>Modify Items</h1>
         </div><!-- End Page Title -->
-
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Modify Products</h5>
-
                             <!-- Table with stripped rows -->
                             <div class="table-responsive">
                                 <table class="table datatable">
@@ -425,7 +420,8 @@
                                                 <td>
                                                     <?= $pr['date'] ?>
                                                 </td>
-                                                <td><a href="/edit" type="button" class="btn btn-outline-warning">Edit</a>
+                                                <td><a href="/edit/<?= $pr['id'] ?>" type="button"
+                                                        class="btn btn-outline-warning">Edit</a>
                                                 </td>
                                                 <td><a href="/delete/<?= $pr['id'] ?>" type="button"
                                                         class="btn btn-outline-danger">Delete</a>
@@ -436,6 +432,79 @@
                             </div>
 
                             <!-- End Table with stripped rows -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <div class="row">
+                <div class="col-lg-10">
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"></h5>
+                            <!-- Floating Labels Form -->
+                            <form class="row g-3" action="/<?= (isset($edit['id'])) ? "submitedit/" . $edit['id'] : " " ?>"
+    method="post" enctype="multipart/form-data" id="imageForm">
+
+    <div class="col-md-12">
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingName" name="name"
+                placeholder="Item Name" value="<?= (isset($edit['name'])) ? $edit['name'] : "" ?>">
+            <label for="floatingName">Item Name</label>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="form-floating">
+            <textarea class="form-control" name="description" placeholder="Description"
+                id="floatingTextarea" style="height: 100px;"><?= (isset($edit['description'])) ? $edit['description'] : "" ?></textarea>
+            <label for="floatingTextarea">Item Description</label>
+        </div>
+    </div>
+    <!-- Category here -->
+    <div class="col-md-2">
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelect" name="category" aria-label="State">
+                <?php foreach ($cat as $c): ?>
+                    <option value="<?= $c['categories'] ?>" <?= (isset($edit['category']) && $edit['category'] == $c['categories']) ? "selected" : "" ?>>
+                        <?= $c['categories'] ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <label for="floatingSelect">Category</label>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="form-floating">
+            <input type="number" class="form-control" id="floatingQuantity" name="quantity"
+                placeholder="Quantity" value="<?= (isset($edit['quantity'])) ? $edit['quantity'] : "" ?>">
+            <label for="floatingQuantity">Quantity</label>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingPrize" name="prize"
+                placeholder="Prize" value="<?= (isset($edit['prize'])) ? $edit['prize'] : "" ?>">
+            <label for="floatingPrize">Prize</label>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="formFile" class="form-label">Upload Image</label>
+        <input class="form-control" type="file" id="formFile" name="image" onchange="previewImage()">
+    </div>
+    <!-- Image Preview -->
+    <div class="col-md-2" id="imagePreviewContainer" style="display: none;">
+        <img id="imagePreview" alt="Image Preview" style="max-width: 100%; max-height: 200px;">
+    </div>
+    <!-- End Image Preview -->
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit"
+            value="<?= (isset($edit['id'])) ? "Update" : "Submit" ?>">
+        <button type="reset" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+    </div>
+</form><!-- End floating Labels Form -->
 
                         </div>
                     </div>
@@ -474,7 +543,28 @@
 
     <!-- Template Main JS File -->
     <script src="public/assets/js/main.js"></script>
+    <script>
+        function previewImage() {
+            var input = document.getElementById('formFile');
+            var imagePreview = document.getElementById('imagePreview');
+            var imagePreviewContainer = document.getElementById('imagePreviewContainer');
 
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imagePreviewContainer.style.display = 'block';
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function resetForm() {
+            document.getElementById('imageForm').reset(); // Reset the form
+            document.getElementById('imagePreviewContainer').style.display = 'none'; // Hide the image preview
+        }
+    </script>
 </body>
 
 </html>

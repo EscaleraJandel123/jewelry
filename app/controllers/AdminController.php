@@ -40,6 +40,7 @@ class AdminController extends Controller {
     public function modify() {
         $this->call->model('AdminModel_model');
         $data['prod'] = $this->AdminModel_model->getInfo();
+        $data['cat'] = $this->AdminModel_model->getCat();
         $this->call->view('admin/modify', $data);
     }
     public function delete($id)
@@ -52,6 +53,13 @@ class AdminController extends Controller {
             $_SESSION['delete'] = "FAILED";
             redirect('/modify');
         }
+    }
+    public function edit($id)
+    {
+        $this->call->model('AdminModel_model');
+        $data['prod'] = $this->AdminModel_model->getInfo();
+        $data['edit'] = $this->AdminModel_model->searchInfo($id);
+        $this->call->view('admin/modify', $data);
     }
 }
 ?>
