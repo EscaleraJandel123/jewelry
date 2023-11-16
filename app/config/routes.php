@@ -52,8 +52,15 @@ $router->get('/cart', 'MainController::cart');
 $router->get('/checkout', 'MainController::checkout');
 $router->get('/contact', 'MainController::contact');
 
+
+
+
+
 $router->get('/login', 'MainController::login');
 $router->get('/register', 'MainController::register');
+
+
+
 
 $router->get('/dashboard', 'AdminController::dashboard');
 $router->get('/products', 'AdminController::products');
