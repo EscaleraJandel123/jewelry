@@ -2,11 +2,11 @@
 defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 class AdminController extends Controller {
-	public function dashboard() {
+	
+    public function dashboard() {
         $this->call->view('admin/dashboard');
     }
     public function products() {
-        $this->call->model('AdminModel_model');
         $data['prod'] = $this->AdminModel_model->getInfo();
         $this->call->view('admin/products',$data);
     }
@@ -24,7 +24,6 @@ class AdminController extends Controller {
             "quantity" => $quantity,
             "prize" => $prize,
             // "image" => $image
-            
         );
         $this->db->table('prod')->insert($bind);
         
@@ -32,13 +31,11 @@ class AdminController extends Controller {
     }
 
     public function items() {
-        $this->call->model('AdminModel_model');
         $data['cat'] = $this->AdminModel_model->getCat();
         $this->call->view('admin/items',$data);
     }
-    
+
     public function modify() {
-        $this->call->model('AdminModel_model');
         $data['prod'] = $this->AdminModel_model->getInfo();
         $data['cat'] = $this->AdminModel_model->getCat();
         $this->call->view('admin/modify', $data);
@@ -56,7 +53,6 @@ class AdminController extends Controller {
     }
     public function edit($id)
     {
-        $this->call->model('AdminModel_model');
         $data['prod'] = $this->AdminModel_model->getInfo();
         $data['edit'] = $this->AdminModel_model->searchInfo($id);
         $this->call->view('admin/modify', $data);

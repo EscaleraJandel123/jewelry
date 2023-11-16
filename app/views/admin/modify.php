@@ -29,7 +29,7 @@
     <link href="public/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="public/assets/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL.PUBLIC_DIR.'/assets/css/style.css' ?>" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: NiceAdmin

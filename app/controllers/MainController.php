@@ -6,7 +6,7 @@ class MainController extends Controller {
         $this->call->view('homepage');
     }
     public function shop() {
-        $this->call->model('Shopmodel_model');
+        
         $data['prod'] = $this->Shopmodel_model->getInfo();
         $this->call->view('shop', $data);
     }
