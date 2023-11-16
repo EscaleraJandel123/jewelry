@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 16, 2023 at 01:04 PM
+-- Generation Time: Nov 16, 2023 at 04:12 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -109,7 +109,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`) VALUES
-(1, 'jandel', 'jandel');
+(1, 'jandel', 'jandel'),
+(2, 'jandeleido@gmail.com', '$2y$10$bykiOPjIJs24I9J2nbG2CuncoVYSG7axBwnCUWgClreiAyHG7yVAK'),
+(3, 'alejandrogino950@gmail.com', '$2y$10$LKZJ5zFxzjEiXE890dXNWOq2JcaHLjOy1Vh6Z43eVYd80cApdPHNq');
 
 --
 -- Indexes for dumped tables
@@ -165,7 +167,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
