@@ -64,3 +64,4 @@ $router->get('/modify', 'AdminController::modify');
 $router->post('/save', 'AdminController::add');
 $router->get('/delete/(:num)', 'AdminController::delete');
 $router->get('/edit/(:num)', 'AdminController::edit');
+$router->post('/submitedit/(:num)', 'AdminController::submitedit');

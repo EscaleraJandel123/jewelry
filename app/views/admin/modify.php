@@ -20,16 +20,16 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="public/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="public/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="public/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="public/assets/vendor/quill/quill.snow.css" rel="stylesheet">
-    <link href="public/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-    <link href="public/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-    <link href="public/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap/css/bootstrap.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap-icons/bootstrap-icons.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/boxicons/css/boxicons.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/quill/quill.snow.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/quill/quill.bubble.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/remixicon/remixicon.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/simple-datatables/style.css' ?>" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="<?php echo BASE_URL.PUBLIC_DIR.'/assets/css/style.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/css/style.css' ?>" rel="stylesheet">
 
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -378,7 +378,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Modify Products</h5>
+                            <h5 class="card-title"></h5>
                             <!-- Table with stripped rows -->
                             <div class="table-responsive">
                                 <table class="table datatable">
@@ -398,7 +398,9 @@
                                     <tbody>
                                         <?php foreach ($prod as $pr): ?>
                                             <tr>
-                                                <th scope="row">1</th>
+                                                <th scope="row">
+                                                    <?= $pr['id'] ?>
+                                                </th>
                                                 <td>
                                                     <?= $pr['name'] ?>
                                                 </td>
@@ -445,66 +447,74 @@
                         <div class="card-body">
                             <h5 class="card-title"></h5>
                             <!-- Floating Labels Form -->
-                            <form class="row g-3" action="/<?= (isset($edit['id'])) ? "submitedit/" . $edit['id'] : " " ?>"
-    method="post" enctype="multipart/form-data" id="imageForm">
+                            <form class="row g-3"
+                                action="/<?= (isset($edit['id'])) ? "submitedit/" . $edit['id'] : " " ?>" method="post"
+                                enctype="multipart/form-data" id="imageForm">
 
-    <div class="col-md-12">
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingName" name="name"
-                placeholder="Item Name" value="<?= (isset($edit['name'])) ? $edit['name'] : "" ?>">
-            <label for="floatingName">Item Name</label>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-floating">
-            <textarea class="form-control" name="description" placeholder="Description"
-                id="floatingTextarea" style="height: 100px;"><?= (isset($edit['description'])) ? $edit['description'] : "" ?></textarea>
-            <label for="floatingTextarea">Item Description</label>
-        </div>
-    </div>
-    <!-- Category here -->
-    <div class="col-md-2">
-        <div class="form-floating mb-3">
-            <select class="form-select" id="floatingSelect" name="category" aria-label="State">
-                <?php foreach ($cat as $c): ?>
-                    <option value="<?= $c['categories'] ?>" <?= (isset($edit['category']) && $edit['category'] == $c['categories']) ? "selected" : "" ?>>
-                        <?= $c['categories'] ?>
-                    </option>
-                <?php endforeach; ?>
-            </select>
-            <label for="floatingSelect">Category</label>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="form-floating">
-            <input type="number" class="form-control" id="floatingQuantity" name="quantity"
-                placeholder="Quantity" value="<?= (isset($edit['quantity'])) ? $edit['quantity'] : "" ?>">
-            <label for="floatingQuantity">Quantity</label>
-        </div>
-    </div>
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingName" name="name"
+                                            placeholder="Item Name"
+                                            value="<?= (isset($edit['name'])) ? $edit['name'] : "" ?>">
+                                        <label for="floatingName">Item Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" name="description" placeholder="Description"
+                                            id="floatingTextarea"
+                                            style="height: 100px;"><?= (isset($edit['description'])) ? $edit['description'] : "" ?></textarea>
+                                        <label for="floatingTextarea">Item Description</label>
+                                    </div>
+                                </div>
+                                <!-- Category here -->
+                                <div class="col-md-2">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="floatingSelect" name="category"
+                                            aria-label="State">
+                                            <?php foreach ($cat as $c): ?>
+                                                <option value="<?= $c['categories'] ?>" <?= (isset($edit['category']) && $edit['category'] == $c['categories']) ? "selected" : "" ?>>
+                                                    <?= $c['categories'] ?>
+                                                </option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                        <label for="floatingSelect">Category</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-floating">
+                                        <input type="number" class="form-control" id="floatingQuantity" name="quantity"
+                                            placeholder="Quantity"
+                                            value="<?= (isset($edit['quantity'])) ? $edit['quantity'] : "" ?>">
+                                        <label for="floatingQuantity">Quantity</label>
+                                    </div>
+                                </div>
 
-    <div class="col-md-2">
-        <div class="form-floating">
-            <input type="text" class="form-control" id="floatingPrize" name="prize"
-                placeholder="Prize" value="<?= (isset($edit['prize'])) ? $edit['prize'] : "" ?>">
-            <label for="floatingPrize">Prize</label>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <label for="formFile" class="form-label">Upload Image</label>
-        <input class="form-control" type="file" id="formFile" name="image" onchange="previewImage()">
-    </div>
-    <!-- Image Preview -->
-    <div class="col-md-2" id="imagePreviewContainer" style="display: none;">
-        <img id="imagePreview" alt="Image Preview" style="max-width: 100%; max-height: 200px;">
-    </div>
-    <!-- End Image Preview -->
-    <div class="text-center">
-        <input class="btn btn-primary" type="submit"
-            value="<?= (isset($edit['id'])) ? "Update" : "Submit" ?>">
-        <button type="reset" class="btn btn-secondary" onclick="resetForm()">Reset</button>
-    </div>
-</form><!-- End floating Labels Form -->
+                                <div class="col-md-2">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingPrize" name="prize"
+                                            placeholder="Prize"
+                                            value="<?= (isset($edit['prize'])) ? $edit['prize'] : "" ?>">
+                                        <label for="floatingPrize">Prize</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="formFile" class="form-label">Upload Image</label>
+                                    <input class="form-control" type="file" id="formFile" name="image"
+                                        onchange="previewImage()">
+                                </div>
+                                <!-- Image Preview -->
+                                <div class="col-md-2" id="imagePreviewContainer" style="display: none;">
+                                    <img id="imagePreview" alt="Image Preview"
+                                        style="max-width: 100%; max-height: 200px;">
+                                </div>
+                                <!-- End Image Preview -->
+                                <div class="text-center">
+                                    <input class="btn btn-primary" type="submit"
+                                        value="<?= (isset($edit['id'])) ? "Update" : "Update" ?>">
+                                    <button type="reset" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                                </div>
+                            </form><!-- End floating Labels Form -->
 
                         </div>
                     </div>
@@ -532,17 +542,17 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="public/assets/vendor/apexcharts/apexcharts.min.js"></script>
-    <script src="public/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="public/assets/vendor/chart.js/chart.umd.js"></script>
-    <script src="public/assets/vendor/echarts/echarts.min.js"></script>
-    <script src="public/assets/vendor/quill/quill.min.js"></script>
-    <script src="public/assets/vendor/simple-datatables/simple-datatables.js"></script>
-    <script src="public/assets/vendor/tinymce/tinymce.min.js"></script>
-    <script src="public/assets/vendor/php-email-form/validate.js"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/apexcharts/apexcharts.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/chart.js/chart.umd.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/echarts/echarts.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/quill/quill.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/simple-datatables/simple-datatables.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/tinymce/tinymce.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/php-email-form/validate.js' ?>"></script>
 
     <!-- Template Main JS File -->
-    <script src="public/assets/js/main.js"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/js/main.js' ?>"></script>
     <script>
         function previewImage() {
             var input = document.getElementById('formFile');

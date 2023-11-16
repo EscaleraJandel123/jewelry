@@ -27,7 +27,7 @@ class AdminController extends Controller {
         );
         $this->db->table('prod')->insert($bind);
         
-        redirect('/items');
+        redirect('items');
     }
 
     public function items() {
@@ -44,18 +44,40 @@ class AdminController extends Controller {
     {
         if(isset($id)){
             $this->db->table('prod')->where("id", $id)->delete();
-            redirect('/modify');
+            redirect('modify');
         }
         else{
             $_SESSION['delete'] = "FAILED";
-            redirect('/modify');
+            redirect('modify');
         }
     }
     public function edit($id)
     {
         $data['prod'] = $this->AdminModel_model->getInfo();
+        $data['cat'] = $this->AdminModel_model->getCat();
         $data['edit'] = $this->AdminModel_model->searchInfo($id);
         $this->call->view('admin/modify', $data);
+    }
+
+    public function submitedit($id)
+    {
+        if(isset($id))
+        {
+            $name = $this->io->post('name');
+        $description = $this->io->post('description');
+        $category = $this->io->post('category');
+        $quantity = $this->io->post('quantity');
+        $prize = $this->io->post('prize');
+        $data = [
+            "name" => $name,
+            "description" => $description,
+            "category" => $category,
+            "quantity" => $quantity,
+            "prize" => $prize,
+        ];
+        $this->db->table('prod')->where("id", $id)->update($data);
+        redirect('modify');
+        }
     }
 }
 ?>
