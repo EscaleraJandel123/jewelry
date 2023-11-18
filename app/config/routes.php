@@ -52,6 +52,8 @@ $router->get('/cart', 'MainController::cart');
 $router->get('/checkout', 'MainController::checkout');
 $router->get('/contact', 'MainController::contact');
 
+$router->get('/Ac/(:num)', 'MainController::Ac');
+
 
 $router->get('/login', 'MainController::login');
 $router->get('/register', 'MainController::register');

@@ -81,7 +81,7 @@
                     <i class="fas fa-heart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
-                <a href="" class="btn border">
+                <a href="/cart" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
                     <span class="badge">0</span>
                 </a>
@@ -134,13 +134,13 @@
                             <a href="/" class="nav-item nav-link">Home</a>
                             <a href="/shop" class="nav-item nav-link active">Shop</a>
                             <a href="/detail" class="nav-item nav-link">Shop Detail</a>
-                            <div class="nav-item dropdown">
+                            <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     <a href="/cart" class="dropdown-item">Shopping Cart</a>
                                     <a href="/checkout" class="dropdown-item">Checkout</a>
                                 </div>
-                            </div>
+                            </div> -->
                             <a href="/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
@@ -331,7 +331,7 @@
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
                                 <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                <a href="<?php echo BASE_URL . 'Ac/' . $pr['id']; ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                             </div>
                         </div>
                     </div>
