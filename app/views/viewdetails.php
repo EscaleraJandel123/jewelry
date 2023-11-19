@@ -20,10 +20,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<?php echo BASE_URL . PUBLIC_DIR .'/lib/owlcarousel/assets/owl.carousel.min.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/lib/owlcarousel/assets/owl.carousel.min.css' ?>" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?php echo BASE_URL . PUBLIC_DIR .'/css/style.css'?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/css/style.css' ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -189,8 +189,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 pb-5">
-                    <h3 class="font-weight-semi-bold"><?= $prod['name']?></h3>
+                <div class="col-lg-7 pb-5 mx-2">
+                    <h3 class="font-weight-semi-bold">
+                        <?= $prod['name'] ?>
+                    </h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
                             <small class="fas fa-star"></small>
@@ -201,25 +203,20 @@
                         </div>
                         <small class="pt-1">(50 Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4">$<?= $prod['prize']?></h3>
-                    <p class="mb-4"><?= $prod['description']?></p>
-                    
-                    <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                            <input type="text" class="form-control bg-secondary text-center" value="1">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <a href="<?php echo BASE_URL . 'Ac/' . $prod['id']; ?>" class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                            Cart</a>
+                    <h3 class="font-weight-semi-bold mb-4">$
+                        <?= $prod['prize'] ?>
+                    </h3>
+                    <p class="mb-4">
+                        <?= $prod['description'] ?>
+                    </p>
+
+                    <div class="button-container">
+                        <a href="/shop" class="btn btn-secondary ml-2">
+                            <i class="fa fa-arrow-left mr-1"></i>
+                        </a>
+                        <a href="<?php echo BASE_URL . 'Ac/' . $prod['id']; ?>" class="btn btn-primary px-3">
+                            <i class="fa fa-shopping-cart mr-1"></i>
+                        </a>
                     </div>
                     <div class="d-flex pt-2">
                         <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
@@ -337,15 +334,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="<?php echo BASE_URL . PUBLIC_DIR .'/lib/easing/easing.min.js'?>"></script>
-    <script src="<?php echo BASE_URL . PUBLIC_DIR .'/lib/owlcarousel/owl.carousel.min.js'?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/lib/easing/easing.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/lib/owlcarousel/owl.carousel.min.js' ?>"></script>
 
     <!-- Contact Javascript File -->
-    <script src="<?php echo BASE_URL . PUBLIC_DIR .'/mail/jqBootstrapValidation.min.js'?>"></script>
-    <script src="<?php echo BASE_URL . PUBLIC_DIR .'/mail/contact.js'?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/mail/jqBootstrapValidation.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/mail/contact.js' ?>"></script>
 
     <!-- Template Javascript -->
-    <script src="<?php echo BASE_URL . PUBLIC_DIR .'/js/main.js'?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/js/main.js' ?>"></script>
 </body>
 
 </html>

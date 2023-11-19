@@ -42,10 +42,7 @@ class MainController extends Controller
         $data['prod'] = $this->Shopmodel_model->getInfo();
         $this->call->view('shop', $data);
     }
-    public function detail()
-    {
-        $this->call->view('detail');
-    }
+
     public function cart()
     {
         
@@ -76,7 +73,6 @@ class MainController extends Controller
     public function view($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
-        
         
         $this->call->view('viewdetails',$data);
     }
