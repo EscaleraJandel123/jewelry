@@ -53,7 +53,7 @@ $router->get('/checkout', 'MainController::checkout');
 $router->get('/contact', 'MainController::contact');
 
 $router->get('/Ac/(:num)', 'MainController::Ac');
-
+$router->get('/view/(:num)', 'MainController::view');
 
 $router->get('/login', 'MainController::login');
 $router->get('/register', 'MainController::register');

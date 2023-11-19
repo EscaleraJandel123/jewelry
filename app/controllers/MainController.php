@@ -73,7 +73,13 @@ class MainController extends Controller
     {
         $this->call->view('contact');
     }
-    
+    public function view($id)
+    {
+        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        
+        
+        $this->call->view('viewdetails',$data);
+    }
 }
 ?>
 
