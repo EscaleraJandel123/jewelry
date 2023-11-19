@@ -51,10 +51,10 @@ class MainController extends Controller
     public function Ac($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
-
         $bind = [
             'name' => $data['prod']['name'],
             'image' => $data['prod']['image'],
+            // 'quantity' => 0,
         ];
         $this->db->table('cart')->insert($bind);
         // $this->call->view('addtocart',$data);
@@ -77,7 +77,6 @@ class MainController extends Controller
     public function view($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
-
         $this->call->view('viewdetails', $data);
     }
 }
