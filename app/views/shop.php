@@ -96,7 +96,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
+            <!-- <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
                     data-toggle="collapse" href="#navbar-vertical"
                     style="height: 65px; margin-top: -1px; padding: 0 30px;">
@@ -126,8 +126,8 @@
                         <a href="" class="nav-item nav-link">Shoes</a>
                     </div>
                 </nav>
-            </div>
-            <div class="col-lg-9">
+            </div> -->
+            <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span
@@ -140,7 +140,8 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/" class="nav-item nav-link">Home</a>
                             <a href="/shop" class="nav-item nav-link active">Shop</a>
-                            
+                            <a href="/detail" class="nav-item nav-link">Shop Detail</a>
+
                             <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                                 <div class="dropdown-menu rounded-0 m-0">
@@ -167,7 +168,7 @@
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0"><a href="/">Home</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Shop</p>
             </div>
@@ -341,28 +342,35 @@
                     </div>
                     <div class="card-deck">
                         <?php foreach ($prod as $pr): ?>
-                            <div class="card product-item border-0 mb-4">
-                                <div
-                                    class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    <a href=""><img class="img-fluid w-100" src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>"
-                                            alt="img" style="cursor: pointer"></a>
-                                </div>
-                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <h6 class="text-truncate mb-3">
-                                        <?= $pr['name'] ?>
-                                    </h6>
-                                    <div class="d-flex justify-content-center">
-                                        <h6>$
-                                            <?= $pr['prize'] ?>
-                                        </h6>
+                            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                                <div class="card product-item border-0">
+                                    <div
+                                        class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <a href="">
+                                            <img class="img-fluid w-100" src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>"
+                                                alt="img" style="cursor: pointer">
+                                        </a>
                                     </div>
-                                </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>" class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                    <a href="<?php echo BASE_URL . 'Ac/' . $pr['id']; ?>"
-                                        class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    <div class="card-body text-center p-2 pt-3 pb-2">
+                                        <h6 class="text-truncate mb-2">
+                                            <?= $pr['name'] ?>
+                                        </h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6>$
+                                                <?= $pr['prize'] ?>
+                                            </h6>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"
+                                            class="btn btn-sm text-dark p-0">
+                                            <i class="fas fa-eye text-primary mr-1"></i>View Detail
+                                        </a>
+                                        <a href="<?php echo BASE_URL . 'Ac/' . $pr['id']; ?>"
+                                            class="btn btn-sm text-dark p-0">
+                                            <i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach ?>

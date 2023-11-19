@@ -19,7 +19,7 @@ class MainController extends Controller
     {
         $this->call->view('register');
     }
-    
+
     // public function create(){
     //     $email = $this->io->post('email');
     //     $password = $this->io->post('password');
@@ -45,7 +45,6 @@ class MainController extends Controller
 
     public function cart()
     {
-        
         $this->call->view('cart');
     }
 
@@ -70,12 +69,16 @@ class MainController extends Controller
     {
         $this->call->view('contact');
     }
+    public function detail()
+    {
+        $this->call->view('detail');
+    }
+
     public function view($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
-        
-        $this->call->view('viewdetails',$data);
+
+        $this->call->view('viewdetails', $data);
     }
 }
 ?>
-

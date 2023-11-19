@@ -65,16 +65,7 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
-                        <div class="input-group-append">
-                            <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
+                
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="" class="btn border">
@@ -90,11 +81,10 @@
     </div>
     <!-- Topbar End -->
 
-
     <!-- Navbar Start -->
-    <div class="container-fluid mb-5">
+    <div class="container-fluid mb-">
         <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
+            <!-- <div class="col-lg-3 d-none d-lg-block">
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
                     <h6 class="m-0">Categories</h6>
                     <i class="fa fa-angle-down text-dark"></i>
@@ -120,8 +110,8 @@
                         <a href="" class="nav-item nav-link">Shoes</a>
                     </div>
                 </nav>
-            </div>
-            <div class="col-lg-9">
+            </div> -->
+            <div class="col-lg-12">
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
                         <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
@@ -133,6 +123,7 @@
                         <div class="navbar-nav mr-auto py-0">
                             <a href="/" class="nav-item nav-link active">Home</a>
                             <a href="/shop" class="nav-item nav-link">Shop</a>
+                            <a href="/detail" class="nav-item nav-link">Shop Detail</a>
                             
                             <!-- <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
