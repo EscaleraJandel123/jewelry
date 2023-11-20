@@ -39,7 +39,9 @@ class MainController extends Controller
     }
     public function checkout()
     {
-        $this->call->view('checkout');
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']); //count the number of data in carts
+        $this->call->view('checkout',$data);
     }
     public function contact()
     {  

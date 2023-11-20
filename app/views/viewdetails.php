@@ -174,8 +174,8 @@
                         <div class="d-flex align-items-center mb-4 pt-2">
                             <div class="input-group quantity mr-3" style="width: 120px;">
 
-                                <input min="1" max="20" type="number" name="quantity" placeholder="Quantity"
-                                    class="form-control" />
+                                <input min="1" type="number" name="quantity" placeholder="Quantity"
+                                    class="form-control" required />
                             </div>
                             <button type="submit" class="btn btn-primary px-3">
                                 <i class="fa fa-shopping-cart mr-1"></i> Add To Cart
