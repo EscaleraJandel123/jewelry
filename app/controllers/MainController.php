@@ -43,8 +43,9 @@ class MainController extends Controller
     }
     public function contact()
     {  
-        
-        $this->call->view('contact');
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']); //count the number of data in carts
+        $this->call->view('contact',$data);
     }
     public function detail()
     {

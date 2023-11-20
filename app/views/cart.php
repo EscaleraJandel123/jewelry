@@ -161,7 +161,7 @@
                                 <?= $c['name'] ?>
                             </td>
                             <td class="align-middle">$<?= $c['prize'] ?></td>
-                            <td><?= $c['quantity'] ?></td>
+                            <td class="align-middle"><?= $c['quantity'] ?></td>
                             <td class="align-middle">$<?= $itemTotal ?></td>
                             <td class="align-middle">
                                 <a href="/cartdel/<?= $c['id'] ?>" class="btn btn-sm btn-primary"><i
