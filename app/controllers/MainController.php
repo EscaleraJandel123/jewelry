@@ -37,29 +37,7 @@ class MainController extends Controller
     {
         $this->call->view('homepage');
     }
-    public function shop()
-    {
-        $data['prod'] = $this->Shopmodel_model->getInfo();
-        $this->call->view('shop', $data);
-    }
-
-    public function cart()
-    {
-        $this->call->view('cart');
-    }
-
-    public function Ac($id)
-    {
-        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
-        $bind = [
-            'name' => $data['prod']['name'],
-            'image' => $data['prod']['image'],
-            // 'quantity' => 0,
-        ];
-        $this->db->table('cart')->insert($bind);
-        // $this->call->view('addtocart',$data);
-        redirect('shop');
-    }
+    
 
     public function checkout()
     {
@@ -78,6 +56,48 @@ class MainController extends Controller
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
         $this->call->view('viewdetails', $data);
+    }
+
+    public function shop()
+    {
+        $data['prod'] = $this->Shopmodel_model->getInfo();
+        $this->call->view('shop', $data);
+    }
+
+    public function cart()
+    {
+        $this->call->view('cart');
+    }
+
+    public function Ac($id)
+    {
+        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        
+        $quantity = $this->io->post('quantity');
+
+        $bind = [
+            'name' => $data['prod']['name'],
+            'image' => $data['prod']['image'],
+            'quantity' => $quantity,
+        ];
+
+        $this->db->table('cart')->insert($bind);
+
+       redirect('shop');
+    }
+
+    public function Acc($id)
+    {
+        $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        $bind = [
+            'name' => $data['prod']['name'],
+            'image' => $data['prod']['image'],
+            'quantity' => $data['prod']['quantity'],
+        ];
+
+        $this->db->table('cart')->insert($bind);
+
+       redirect('shop');
     }
 }
 ?>

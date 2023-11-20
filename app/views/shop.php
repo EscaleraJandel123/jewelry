@@ -20,10 +20,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="public/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/lib/owlcarousel/assets/owl.carousel.min.css' ?>" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="public/css/style.css" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/css/style.css' ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -287,14 +287,14 @@
                                         <h6>$
                                             <?= $pr['prize'] ?>
                                         </h6>
-                                        <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                        <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
                                     <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"
                                         class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
                                         Detail</a>
-                                    <a href="<?php echo BASE_URL . 'Ac/' . $pr['id']; ?>"
+                                    <a href="<?php echo BASE_URL . 'Acc/' . $pr['id']; ?>"
                                         class="btn btn-sm text-dark p-0"><i
                                             class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                 </div>
@@ -424,15 +424,15 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="public/lib/easing/easing.min.js"></script>
-    <script src="public/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/lib/easing/easing.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/lib/owlcarousel/owl.carousel.min.js' ?>"></script>
 
     <!-- Contact Javascript File -->
-    <script src="public/mail/jqBootstrapValidation.min.js"></script>
-    <script src="public/mail/contact.js"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/mail/jqBootstrapValidation.min.js' ?>"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/mail/contact.js' ?>"></script>
 
     <!-- Template Javascript -->
-    <script src="public/js/main.js"></script>
+    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/js/main.js' ?>"></script>
 </body>
 
 </html>

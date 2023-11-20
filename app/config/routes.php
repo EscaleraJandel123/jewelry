@@ -52,7 +52,8 @@ $router->get('/detail', 'MainController::detail');
 $router->get('/checkout', 'MainController::checkout');
 $router->get('/contact', 'MainController::contact');
 
-$router->get('/Ac/(:num)', 'MainController::Ac');
+$router->post('/Ac/(:num)', 'MainController::Ac');
+$router->get('/Acc/(:num)', 'MainController::Acc');
 $router->get('/view/(:num)', 'MainController::view');
 
 $router->get('/login', 'MainController::login');
