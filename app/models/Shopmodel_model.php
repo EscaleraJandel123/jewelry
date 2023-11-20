@@ -20,6 +20,10 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('prod')->select('*')->where('id', $id)->get();
     }
+    public function getcart()
+    {
+        return $this->db->table('cart')->get_all();
+    }
 
 }
 ?>

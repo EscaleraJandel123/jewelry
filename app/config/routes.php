@@ -55,6 +55,7 @@ $router->get('/contact', 'MainController::contact');
 $router->post('/Ac/(:num)', 'MainController::Ac');
 $router->get('/Acc/(:num)', 'MainController::Acc');
 $router->get('/view/(:num)', 'MainController::view');
+$router->get('/cartdel/(:num)', 'MainController::cartdel');
 
 $router->get('/login', 'MainController::login');
 $router->get('/register', 'MainController::register');

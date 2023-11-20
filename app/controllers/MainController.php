@@ -66,7 +66,8 @@ class MainController extends Controller
 
     public function cart()
     {
-        $this->call->view('cart');
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $this->call->view('cart', $data);
     }
 
     public function Ac($id)
@@ -78,6 +79,7 @@ class MainController extends Controller
         $bind = [
             'name' => $data['prod']['name'],
             'image' => $data['prod']['image'],
+            'prize' => $data['prod']['prize'],
             'quantity' => $quantity,
         ];
 
@@ -98,6 +100,17 @@ class MainController extends Controller
         $this->db->table('cart')->insert($bind);
 
        redirect('shop');
+    }
+    public function cartdel($id)
+    {
+        if(isset($id)){
+            $this->db->table('cart')->where("id", $id)->delete();
+            redirect('cart');
+        }
+        else{
+            $_SESSION['delete'] = "FAILED";
+            redirect('modify');
+        }
     }
 }
 ?>
