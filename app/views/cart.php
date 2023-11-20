@@ -148,6 +148,7 @@
                 <table class="table table-bordered text-center mb-0">
                     <thead class="bg-secondary text-dark">
                         <tr>
+                            <th>Check</th>
                             <th>Products</th>
                             <th>Price</th>
                             <th>Quantity</th>
@@ -158,6 +159,9 @@
                     <?php foreach ($cart as $c): ?>
                         <tbody class="align-middle">
                             <tr>
+                                <td>
+                                    ceck here
+                                </td>
                                 <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;">
                                     <?= $c['name'] ?>
                                 </td>
