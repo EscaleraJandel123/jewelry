@@ -81,7 +81,6 @@ class AdminController extends Controller
             $category = $this->io->post('category');
             $quantity = $this->io->post('quantity');
             $prize = $this->io->post('prize');
-
             // Check if a new image is uploaded
             if ($_FILES['image']['size'] > 0) {
                 // File upload handling
@@ -89,13 +88,10 @@ class AdminController extends Controller
                 $uploadedFile = $_FILES['image']['tmp_name'];
                 $imageFileName = uniqid('img_') . '_' . $_FILES['image']['name'];
                 $targetFile = $uploadDir . $imageFileName;
-
                 move_uploaded_file($uploadedFile, $targetFile);
-
                 // Update the image field in the database
                 $data['image'] = $imageFileName;
             }
-
             $data = [
                 "name" => $name,
                 "description" => $description,
@@ -104,13 +100,10 @@ class AdminController extends Controller
                 "prize" => $prize,
                 "image" => $imageFileName,
             ];
-
             // Update the product data in the database
             $this->db->table('prod')->where("id", $id)->update($data);
-
             redirect('modify');
         }
     }
-
 }
 ?>

@@ -6,6 +6,9 @@ class Shopmodel_model extends Model
     public function getInfo()
     {
         return $this->db->table('prod')->get_all();
+        // $this->db->table('table')->limit(10)->get_all();
+        // return $this->db->table('prod')->where('category', 'perlas')->order_by('id', 'ASC')->get_all();
+
     }
     public function getCat()
     {
@@ -24,6 +27,5 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('cart')->get_all();
     }
-
 }
 ?>

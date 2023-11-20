@@ -19,7 +19,6 @@ class MainController extends Controller
     {
         $this->call->view('register');
     }
-
     // public function create(){
     //     $email = $this->io->post('email');
     //     $password = $this->io->post('password');
@@ -32,73 +31,70 @@ class MainController extends Controller
     //     $this->db->table('users')->insert($bind);
     //     redirect('login');
     // }
-
     public function index()
     {
-        $this->call->view('homepage');
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']); //count the number of data in carts
+        $this->call->view('homepage',$data);
     }
-    
-
     public function checkout()
     {
         $this->call->view('checkout');
     }
     public function contact()
-    {
+    {  
+        
         $this->call->view('contact');
     }
     public function detail()
     {
-        $this->call->view('detail');
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']); //count the number of data in carts
+        $this->call->view('detail', $data);
     }
-
     public function view($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
         $this->call->view('viewdetails', $data);
     }
-
     public function shop()
     {
         $data['prod'] = $this->Shopmodel_model->getInfo();
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']); //count the number of data in carts
         $this->call->view('shop', $data);
     }
-
     public function cart()
     {
         $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']); //count the number of data in carts
+        // echo $cartItemCount;
+
         $this->call->view('cart', $data);
     }
-
     public function Ac($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
-        
         $quantity = $this->io->post('quantity');
-
         $bind = [
             'name' => $data['prod']['name'],
             'image' => $data['prod']['image'],
             'prize' => $data['prod']['prize'],
             'quantity' => $quantity,
         ];
-
         $this->db->table('cart')->insert($bind);
-
        redirect('shop');
     }
-
     public function Acc($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
         $bind = [
             'name' => $data['prod']['name'],
             'image' => $data['prod']['image'],
-            'quantity' => $data['prod']['quantity'],
+            'prize' => $data['prod']['prize'],
+            'quantity' => 1,
         ];
-
         $this->db->table('cart')->insert($bind);
-
        redirect('shop');
     }
     public function cartdel($id)
