@@ -58,6 +58,8 @@ class MainController extends Controller
     public function view($id)
     {
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
+        $data['cart'] = $this->Shopmodel_model->getcart();
+        $data['cartItemCount'] = count($data['cart']);
         $this->call->view('viewdetails', $data);
     }
     public function shop()
