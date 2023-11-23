@@ -25,8 +25,7 @@ class Shopmodel_model extends Model
     }
     public function getcart($user_id)
     {
-        // return $this->db->table('cart')->get_all();
-        return $this->db->table('cart')->where('user_id', $user_id)->order_by('id', 'ASC')->get_all();
+        return $this->db->table('cart')->where('user_id', $user_id)->get_all();
     }
 }
 ?>

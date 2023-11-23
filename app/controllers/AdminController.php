@@ -6,6 +6,9 @@ class AdminController extends Controller
 
     public function dashboard()
     {
+        if (!$this->session->userdata('IsAdmin')) {
+            redirect('login');
+        }
         $this->call->view('admin/dashboard');
     }
     public function products()

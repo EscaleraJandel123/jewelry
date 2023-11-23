@@ -138,7 +138,6 @@
             <table class="table table-bordered text-center mb-0">
                 <thead class="bg-secondary text-dark">
                     <tr>
-                        <th>Check</th>
                         <th>Products</th>
                         <th>Price</th>
                         <th>Quantity</th>
@@ -154,7 +153,6 @@
                         $cartTotal += $itemTotal; // Add the total of each item to the overall cart total
                     ?>
                         <tr>
-                            <td>ceck here</td>
                             <td class="align-middle">
                                 <img src="img/product-1.jpg" alt="" style="width: 50px;">
                                 <?= $c['name'] ?>
@@ -172,14 +170,14 @@
             </table>
         </div>
         <div class="col-lg-4">
-            <form class="mb-5" action="">
+            <!-- <form class="mb-5" action="">
                 <div class="input-group">
                     <input type="text" class="form-control p-4" placeholder="Coupon Code">
                     <div class="input-group-append">
                         <button class="btn btn-primary">Apply Coupon</button>
                     </div>
                 </div>
-            </form>
+            </form> -->
             <div class="card border-secondary mb-5">
                 <div class="card-header bg-secondary border-0">
                     <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
