@@ -260,7 +260,7 @@
                                         <label for="floatingPrize">Prize</label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-5">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image"
                                         onchange="previewImage()" required>
@@ -291,8 +291,6 @@
                                     <?php foreach ($cat as $c): ?>
                                         <span class="badge bg-secondary mr-2 mb-2">
                                         <a href="/delcat/<?= $c['id'] ?>" style="color: white; text-decoration: none;"><?= $c['categories'] ?></a>
-
-
                                         </span>
                                     <?php endforeach; ?>
                                 </div>
