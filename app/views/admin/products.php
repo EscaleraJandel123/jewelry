@@ -227,7 +227,7 @@
                   <tbody>
                     <?php foreach ($prod as $pr): ?>
                       <tr>
-                        <th scope="row">1</th>
+                        <th scope="row"><?= $pr['id'] ?></th>
                         <td>
                           <img src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt="asd"
                             style="max-width: 70px; cursor: pointer;">
