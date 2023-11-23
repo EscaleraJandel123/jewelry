@@ -267,7 +267,7 @@
         </section>
         <section class="section">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-12">
 
                     <div class="card">
                         <div class="card-body">
@@ -331,10 +331,11 @@
                                         onchange="previewImage()" required>
                                 </div>
                                 <!-- Image Preview -->
-                                <div class="col-md-2" id="imagePreviewContainer" style="display: none;">
+                                <div class="col-md-12" id="imagePreviewContainer" style="display: none;">
                                     <img id="imagePreview" alt="Image Preview"
-                                        style="max-width: 100%; max-height: 200px;">
+                                        style="max-width: 300px; max-height: 300px;">
                                 </div>
+                                
                                 <!-- End Image Preview -->
                                 <div class="text-center">
                                     <input class="btn btn-primary" type="submit"

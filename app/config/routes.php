@@ -69,6 +69,9 @@ $router->get('/products', 'AdminController::products');
 $router->get('/items', 'AdminController::items');
 $router->get('/modify', 'AdminController::modify');
 $router->post('/save', 'AdminController::add');
+$router->post('/addcat', 'AdminController::addcat');
+$router->get('/delcat/(:num)', 'AdminController::delcat');
+
 $router->get('/delete/(:num)', 'AdminController::delete');
 $router->get('/edit/(:num)', 'AdminController::edit');
 $router->post('/submitedit/(:num)', 'AdminController::submitedit');

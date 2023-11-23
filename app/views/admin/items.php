@@ -20,8 +20,10 @@
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap/css/bootstrap.min.css' ?>" rel="stylesheet">
-    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap-icons/bootstrap-icons.css' ?>" rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap/css/bootstrap.min.css' ?>"
+        rel="stylesheet">
+    <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/bootstrap-icons/bootstrap-icons.css' ?>"
+        rel="stylesheet">
     <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/boxicons/css/boxicons.min.css' ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/quill/quill.snow.css' ?>" rel="stylesheet">
     <link href="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/quill/quill.bubble.css' ?>" rel="stylesheet">
@@ -43,59 +45,59 @@
 
 <body>
 
-<header id="header" class="header fixed-top d-flex align-items-center">
+    <header id="header" class="header fixed-top d-flex align-items-center">
 
-<div class="d-flex align-items-center justify-content-between">
-  <a href="/dashboard" class="logo d-flex align-items-center">
-    <img src="public/assets/img/logo.png" alt="">
-    <span class="d-none d-lg-block">AdminDashboard</span>
-  </a>
-  <i class="bi bi-list toggle-sidebar-btn"></i>
-</div><!-- End Logo -->
-
-
-<nav class="header-nav ms-auto">
-  <ul class="d-flex align-items-center">
-
-    <li class="nav-item d-block d-lg-none">
-      <a class="nav-link nav-icon search-bar-toggle " href="#">
-        <i class="bi bi-search"></i>
-      </a>
-    </li><!-- End Search Icon-->
-
-   
-
-    <li class="nav-item dropdown pe-3">
-
-      <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-        <img src="public/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-      </a><!-- End Profile Iamge Icon -->
-
-      <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-        <li class="dropdown-header">
-          <h6>Kevin Anderson</h6>
-          <span>Admin</span>
-        </li>
-        <li>
-          <hr class="dropdown-divider">
-        </li>
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="/dashboard" class="logo d-flex align-items-center">
+                <img src="public/assets/img/logo.png" alt="">
+                <span class="d-none d-lg-block">AdminDashboard</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
 
 
-        <li>
-          <a class="dropdown-item d-flex align-items-center" href="#">
-            <i class="bi bi-box-arrow-right"></i>
-            <span>Sign Out</span>
-          </a>
-        </li>
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
 
-      </ul><!-- End Profile Dropdown Items -->
-    </li><!-- End Profile Nav -->
+                <li class="nav-item d-block d-lg-none">
+                    <a class="nav-link nav-icon search-bar-toggle " href="#">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </li><!-- End Search Icon-->
 
-  </ul>
-</nav><!-- End Icons Navigation -->
 
-</header><!-- End Header -->
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <img src="public/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+                            <h6>Kevin Anderson</h6>
+                            <span>Admin</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="#">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Sign Out</span>
+                            </a>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
 
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
@@ -204,7 +206,7 @@
 
         <section class="section">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-8">
 
                     <div class="card">
                         <div class="card-body">
@@ -227,37 +229,41 @@
                                         <label for="floatingTextarea">Item Description</label>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+
+
+                                <div class="col-md-3">
                                     <div class="form-floating mb-3">
-                                        <select class="form-select" id="floatingSelect" name="category"
+                                        <select class="form-select" id="categorySelect" name="category"
                                             aria-label="State">
                                             <?php foreach ($cat as $c): ?>
                                                 <option value="<?= $c['categories'] ?>">
                                                     <?= $c['categories'] ?>
                                                 </option>
                                             <?php endforeach; ?>
+                                            <!-- <option value="custom">Other...</option> -->
                                         </select>
-                                        <label for="floatingSelect">Category</label>
+                                        <label for="categorySelect">Category</label>
                                     </div>
                                 </div>
+
                                 <div class="col-md-2">
                                     <div class="form-floating">
                                         <input type="number" class="form-control" id="floatingQuantity" name="quantity"
                                             placeholder="Quantity" required>
-                                        <label for="floatingQuantity"  >Quantity</label>
+                                        <label for="floatingQuantity">Quantity</label>
                                     </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="floatingPrize" name="prize"
                                             placeholder="Prize" required>
-                                        <label for="floatingPrize"  >Prize</label>
+                                        <label for="floatingPrize">Prize</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image"
-                                        onchange="previewImage()" required >
+                                        onchange="previewImage()" required>
                                 </div>
                                 <!-- Image Preview -->
                                 <div class="col-md-2" id="imagePreviewContainer" style="display: none;">
@@ -267,13 +273,45 @@
                                 <!-- End Image Preview -->
                                 <div class="text-center">
                                     <input class="btn btn-primary" type="submit">
-                                    <button type="reset" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+                                    <a href="/items" class="btn btn-secondary">Reset</a>
                                 </div>
                             </form><!-- End floating Labels Form -->
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body" style="height: 380px;">
+                            <div class="col-md-10 mx-auto">
+                                <h5 class="card-title">Category</h5>
+                                <p>note: click to delete</p>
+                                <div class="mb-4">
+                                    <h6>Existing Categories:</h6>
+                                    
+                                    <?php foreach ($cat as $c): ?>
+                                        <span class="badge bg-secondary mr-2 mb-2">
+                                        <a href="/delcat/<?= $c['id'] ?>" style="color: white; text-decoration: none;"><?= $c['categories'] ?></a>
+
+
+                                        </span>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <form method="post" action="addcat" class="mb-4">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="floatingName" name="newcat"
+                                            placeholder="New Category" required>
+                                        <label for="floatingName">Insert new category</label>
+                                    </div>
+                                    <button class="btn btn-primary mt-2" type="submit">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </section>
     </main><!-- End #main -->
 
@@ -300,7 +338,8 @@
     <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/chart.js/chart.umd.js' ?>"></script>
     <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/echarts/echarts.min.js' ?>"></script>
     <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/quill/quill.min.js' ?>"></script>
-    <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/simple-datatables/simple-datatables.js' ?>"></script>
+    <script
+        src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/simple-datatables/simple-datatables.js' ?>"></script>
     <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/tinymce/tinymce.min.js' ?>"></script>
     <script src="<?php echo BASE_URL . PUBLIC_DIR . '/assets/vendor/php-email-form/validate.js' ?>"></script>
 
@@ -322,10 +361,6 @@
 
                 reader.readAsDataURL(input.files[0]);
             }
-        }
-        function resetForm() {
-            document.getElementById('imageForm').reset(); // Reset the form
-            document.getElementById('imagePreviewContainer').style.display = 'none'; // Hide the image preview
         }
     </script>
 </body>

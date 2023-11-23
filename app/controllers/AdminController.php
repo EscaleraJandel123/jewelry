@@ -24,6 +24,7 @@ class AdminController extends Controller
         $quantity = $this->io->post('quantity');
         $prize = $this->io->post('prize');
 
+
         // File upload handling
         $uploadDir = 'uploads/';
         $uploadedFile = $_FILES['image']['tmp_name'];
@@ -45,6 +46,25 @@ class AdminController extends Controller
 
         redirect('items');
     }
+    public function addcat()
+    {
+        $newcat = $this->io->post('newcat');
+        $ins = [
+            'categories' => $newcat
+        ];
+        $this->db->table('cat')->insert($ins);
+        redirect('items');
+    }
+    public function delcat($id)
+    {
+        if (isset($id)) {
+            $this->db->table('cat')->where("id", $id)->delete();
+            redirect('modify');
+        } else {
+            $_SESSION['delete'] = "FAILED";
+            redirect('modify');
+        }
+    }
 
     public function items()
     {
@@ -62,10 +82,10 @@ class AdminController extends Controller
     {
         if (isset($id)) {
             $this->db->table('prod')->where("id", $id)->delete();
-            redirect('modify');
+            redirect('items');
         } else {
             $_SESSION['delete'] = "FAILED";
-            redirect('modify');
+            redirect('items');
         }
     }
     public function edit($id)
