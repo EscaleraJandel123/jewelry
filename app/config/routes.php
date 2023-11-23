@@ -57,10 +57,12 @@ $router->get('/Acc/(:num)', 'MainController::Acc');
 $router->get('/view/(:num)', 'MainController::view');
 $router->get('/cartdel/(:num)', 'MainController::cartdel');
 
-$router->get('/login', 'MainController::login');
-$router->get('/register', 'MainController::register');
-$router->post('/create', 'MainController::create');
+$router->get('/login', 'UserController::login');
+$router->get('/logout', 'MainController::logout');
 
+$router->get('/register', 'UserController::register');
+$router->post('/create', 'UserController::create');
+$router->post('/auth', 'UserController::auth');
 
 $router->get('/dashboard', 'AdminController::dashboard');
 $router->get('/products', 'AdminController::products');

@@ -60,9 +60,7 @@
                                     <span class="d-none d-lg-block">NiceAdmin</span>
                                 </a>
                             </div><!-- End Logo -->
-
                             <div class="card mb-3">
-
                                 <div class="card-body">
 
                                     <div class="pt-4 pb-2">
@@ -70,12 +68,12 @@
                                         <p class="text-center small">Enter your username & password to login</p>
                                     </div>
 
-                                    <form class="row g-3 needs-validation" novalidate>
+                                    <form class="row g-3 needs-validation" novalidate method="post" action="/auth">
 
                                         <div class="col-12">
                                             <label for="yourEmail" class="form-label">Email</label>
                                             <div class="input-group has-validation">
-                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <!-- <span class="input-group-text" id="inputGroupPrepend">@</span> -->
                                                 <input type="text" name="email" class="form-control"
                                                     id="yourEmail" required>
                                                 <div class="invalid-feedback">Please enter your Email.</div>

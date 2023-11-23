@@ -64,7 +64,7 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form method="post" action="/create" class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3 needs-validation" novalidate  method="post" action="/create">
                    
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Your Email</label>

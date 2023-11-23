@@ -23,9 +23,10 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('prod')->select('*')->where('id', $id)->get();
     }
-    public function getcart()
+    public function getcart($user_id)
     {
-        return $this->db->table('cart')->get_all();
+        // return $this->db->table('cart')->get_all();
+        return $this->db->table('cart')->where('user_id', $user_id)->order_by('id', 'ASC')->get_all();
     }
 }
 ?>
