@@ -59,10 +59,10 @@ class AdminController extends Controller
     {
         if (isset($id)) {
             $this->db->table('cat')->where("id", $id)->delete();
-            redirect('modify');
+            redirect('items');
         } else {
             $_SESSION['delete'] = "FAILED";
-            redirect('modify');
+            redirect('items');
         }
     }
 
@@ -82,10 +82,10 @@ class AdminController extends Controller
     {
         if (isset($id)) {
             $this->db->table('prod')->where("id", $id)->delete();
-            redirect('items');
+            redirect('modify');
         } else {
             $_SESSION['delete'] = "FAILED";
-            redirect('items');
+            redirect('modify');
         }
     }
     public function edit($id)
