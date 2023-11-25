@@ -73,7 +73,7 @@
                     </div>
                 </form>
             </div>
-            
+
         </div>
     </div>
     <!-- Topbar End -->
@@ -97,13 +97,7 @@
                             <a href="/" class="nav-item nav-link">Home</a>
                             <a href="/shop" class="nav-item nav-link">Shop</a>
                             <a href="/detail" class="nav-item nav-link">Shop Detail</a>
-                            <!-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="/cart" class="dropdown-item">Shopping Cart</a>
-                                    <a href="/checkout" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div> -->
+
                             <a href="/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
@@ -132,45 +126,51 @@
 
 
     <!-- Cart Start -->
-<div class="container-fluid pt-5">
-    <div class="row px-xl-5">
-        <div class="col-lg-8 table-responsive mb-5">
-            <table class="table table-bordered text-center mb-0">
-                <thead class="bg-secondary text-dark">
-                    <tr>
-                        <th>Products</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Total</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                    <?php
-                    $cartTotal = 0; // Initialize the overall cart total
-                    foreach ($cart as $c):
-                        $itemTotal = $c['prize'] * $c['quantity']; // Calculate total for each item
-                        $cartTotal += $itemTotal; // Add the total of each item to the overall cart total
-                    ?>
+    <div class="container-fluid pt-5">
+        <div class="row px-xl-5">
+            <div class="col-lg-8 table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0">
+                    <thead class="bg-secondary text-dark">
                         <tr>
-                            <td class="align-middle">
-                                <img src="img/product-1.jpg" alt="" style="width: 50px;">
-                                <?= $c['name'] ?>
-                            </td>
-                            <td class="align-middle">$<?= $c['prize'] ?></td>
-                            <td class="align-middle"><?= $c['quantity'] ?></td>
-                            <td class="align-middle">$<?= $itemTotal ?></td>
-                            <td class="align-middle">
-                                <a href="/cartdel/<?= $c['id'] ?>" class="btn btn-sm btn-primary"><i
-                                        class="fa fa-times"></i></a>
-                            </td>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Remove</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-lg-4">
-            <!-- <form class="mb-5" action="">
+                    </thead>
+                    <tbody class="align-middle">
+                        <?php
+                        $cartTotal = 0; // Initialize the overall cart total
+                        foreach ($cart as $c):
+                            $itemTotal = $c['prize'] * $c['quantity']; // Calculate total for each item
+                            $cartTotal += $itemTotal; // Add the total of each item to the overall cart total
+                            ?>
+                            <tr>
+                                <td class="align-middle">
+                                    <img src="img/product-1.jpg" alt="" style="width: 50px;">
+                                    <?= $c['name'] ?>
+                                </td>
+                                <td class="align-middle">$
+                                    <?= $c['prize'] ?>
+                                </td>
+                                <td class="align-middle">
+                                    <?= $c['quantity'] ?>
+                                </td>
+                                <td class="align-middle">$
+                                    <?= $itemTotal ?>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="/cartdel/<?= $c['id'] ?>" class="btn btn-sm btn-primary"><i
+                                            class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-lg-4">
+                <!-- <form class="mb-5" action="">
                 <div class="input-group">
                     <input type="text" class="form-control p-4" placeholder="Coupon Code">
                     <div class="input-group-append">
@@ -178,33 +178,34 @@
                     </div>
                 </div>
             </form> -->
-            <div class="card border-secondary mb-5">
-                <div class="card-header bg-secondary border-0">
-                    <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
-                </div>
-                <div class="card-body">
-                    
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-medium">Subtotal</h6>
-                        <h6 class="font-weight-medium">$<?= $cartTotal ?></h6>
+                <div class="card border-secondary mb-5">
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <h6 class="font-weight-medium">Shipping</h6>
-                        <h6 class="font-weight-medium">$54</h6>
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between">
+                            <h6 class="font-weight-medium">Subtotal</h6>
+                            <h6 class="font-weight-medium">$
+                                <?= $cartTotal ?>
+                            </h6>
+                        </div>
+
                     </div>
-                </div>
-                <div class="card-footer border-secondary bg-transparent">
-                    <div class="d-flex justify-content-between mt-2">
-                        <h5 class="font-weight-bold">Total</h5>
-                        <h5 class="font-weight-bold">$<?= $cartTotal + 54 ?></h5>
+                    <div class="card-footer border-secondary bg-transparent">
+                        <div class="d-flex justify-content-between mt-2">
+                            <h5 class="font-weight-bold">Total</h5>
+                            <h5 class="font-weight-bold">$
+                                <?= $cartTotal ?>
+                            </h5>
+                        </div>
+                        <a href="/checkout" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
                     </div>
-                    <a href="/checkout" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Cart End -->
+    <!-- Cart End -->
 
 
 

@@ -23,9 +23,24 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('prod')->select('*')->where('id', $id)->get();
     }
+
+    public function getIcartById($id)
+    {
+        return $this->db->table('cart')->select('*')->where('id', $id)->get();
+    }
     public function getcart($user_id)
     {
         return $this->db->table('cart')->where('user_id', $user_id)->get_all();
     }
+
+    public function insertPurchaseData($bind) {
+        return $this->db->table('purchase')->insert($bind);
+    }
+
+    public function clearCart($userId)
+    {
+        return $this->db->table('cart')->where('user_id', $userId)->delete();
+    }
+
 }
 ?>
