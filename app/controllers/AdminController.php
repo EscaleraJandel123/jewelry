@@ -6,18 +6,30 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        if (!$this->session->userdata('IsAdmin')) {
+        // if (!$this->session->userdata('IsAdmin')) {
+        //     redirect('login');
+        // }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
             redirect('login');
         }
-        $this->call->view('admin/dashboard');
+        
+        $data['purchase_items'] = $this->AdminModel_model->getSales();
+        $data['Topitems'] = $this->AdminModel_model->topProduct();
+        $this->call->view('admin/dashboard',$data);
     }
     public function products()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         $data['prod'] = $this->AdminModel_model->getInfo();
         $this->call->view('admin/products', $data);
     }
     public function add()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         $name = $this->io->post('name');
         $description = $this->io->post('description');
         $category = $this->io->post('category');
@@ -48,6 +60,9 @@ class AdminController extends Controller
     }
     public function addcat()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         $newcat = $this->io->post('newcat');
         $ins = [
             'categories' => $newcat
@@ -57,6 +72,9 @@ class AdminController extends Controller
     }
     public function delcat($id)
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         if (isset($id)) {
             $this->db->table('cat')->where("id", $id)->delete();
             redirect('items');
@@ -68,18 +86,27 @@ class AdminController extends Controller
 
     public function items()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         $data['cat'] = $this->AdminModel_model->getCat();
         $this->call->view('admin/items', $data);
     }
 
     public function modify()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         $data['prod'] = $this->AdminModel_model->getInfo();
         $data['cat'] = $this->AdminModel_model->getCat();
         $this->call->view('admin/modify', $data);
     }
     public function delete($id)
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         if (isset($id)) {
             $this->db->table('prod')->where("id", $id)->delete();
             redirect('modify');
@@ -90,6 +117,9 @@ class AdminController extends Controller
     }
     public function edit($id)
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         $data['prod'] = $this->AdminModel_model->getInfo();
         $data['cat'] = $this->AdminModel_model->getCat();
         $data['edit'] = $this->AdminModel_model->searchInfo($id);
@@ -98,6 +128,9 @@ class AdminController extends Controller
 
     public function submitedit($id)
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'admin') {
+            redirect('login');
+        }
         if (isset($id)) {
             $name = $this->io->post('name');
             $description = $this->io->post('description');

@@ -16,31 +16,59 @@ class UserController extends Controller
         redirect('/login');
     }
 
-    public function auth()
-    {
-        $email = $this->io->post('email');
-        $password = $this->io->post('password');
-        $user = $this->User_model->getEmail($email);
+    // public function auth()
+    // {
+    //     $email = $this->io->post('email');
+    //     $password = $this->io->post('password');
+    //     $user = $this->User_model->getEmail($email);
 
-        if ($user && password_verify($password, $user['password'])) {
-            $sesData = [
-                'user_id' => $user['id'],
-                'email' => $user['email'],
-                'IsLoggedIn' => true
-            ];
-            if ($user['role'] == 'admin') {
-                $ses = ['IsAdmin' => true,];
-                $this->session->set_userdata($ses);
-                redirect('dashboard');
-            } else {
-                $this->session->set_userdata($sesData);
-                redirect('');
-            }
+    //     if ($user && password_verify($password, $user['password'])) {
+    //         $sesData = [
+    //             'user_id' => $user['id'],
+    //             'email' => $user['email'],
+    //             'IsLoggedIn' => true
+    //         ];
+    //         if ($user['role'] == 'admin') {
+    //             $ses = ['IsAdmin' => true,];
+    //             $this->session->set_userdata($ses);
+    //             redirect('dashboard');
+    //         } else {
+    //             $this->session->set_userdata($sesData);
+    //             redirect('');
+    //         }
+    //     } else {
+    //         $this->session->set_flashdata('error', 'Invalid email or password');
+    //         redirect('login');
+    //     }
+    // }
+
+    public function auth()
+{
+    $email = $this->io->post('email');
+    $password = $this->io->post('password');
+    $user = $this->User_model->getEmail($email);
+
+    if ($user && password_verify($password, $user['password'])) {
+        $sesData = [
+            'user_id' => $user['id'],
+            'email' => $user['email'],
+            'IsLoggedIn' => true,
+            'role' => $user['role'], // Include user role in the session data
+        ];
+
+        $this->session->set_userdata($sesData);
+
+        if ($user['role'] == 'admin') {
+            redirect('dashboard');  // Redirect to admin dashboard
         } else {
-            $this->session->set_flashdata('error', 'Invalid email or password');
-            redirect('login');
+            redirect('');  // Redirect to user dashboard
         }
+    } else {
+        $this->session->set_flashdata('error', 'Invalid email or password');
+        redirect('login');
     }
+}
+
 
     public function login()
     {
@@ -50,10 +78,28 @@ class UserController extends Controller
     {
         $this->call->view('register');
     }
+    // public function logout()
+    // {
+    //     $this->session->sess_destroy();
+    //     redirect('login');
+    // }
+
     public function logout()
     {
-        $this->session->sess_destroy();
-        redirect('login');
+        // Check if user is an admin or regular user
+        $role = $this->session->userdata('role');
+    
+        if ($role == 'admin') {
+            // Admin logout
+            $this->session->unset_userdata(['user_id', 'email', 'IsLoggedIn', 'role']);
+            // Additional admin logout logic if needed
+            redirect('admin/login');  // Redirect to admin login page
+        } else {
+            // User logout
+            $this->session->unset_userdata(['user_id', 'email', 'IsLoggedIn', 'role']);
+            redirect('login');  // Redirect to user login page
+        }
     }
+    
 }
 ?>

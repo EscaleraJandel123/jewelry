@@ -42,5 +42,7 @@ class Shopmodel_model extends Model
         return $this->db->table('cart')->where('user_id', $userId)->delete();
     }
 
+  // Shopmodel_model.php
+
 }
 ?>

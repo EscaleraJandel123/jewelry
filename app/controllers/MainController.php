@@ -9,6 +9,10 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
+        
         $userId = $this->session->userdata('user_id');
 
         $data['cart'] = $this->Shopmodel_model->getcart($userId);
@@ -19,6 +23,9 @@ class MainController extends Controller
     public function checkout()
     {
         if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
+        }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
         $userId = $this->session->userdata('user_id');
@@ -33,6 +40,9 @@ class MainController extends Controller
     {
         // Check if the user is logged in
         if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
+        }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
 
@@ -82,12 +92,16 @@ class MainController extends Controller
                     'CustomerId' => $userId,
                     'purchase_id' => $purchaseId,
                     'Item_name' => $cartItem['name'],
+                    'Item_image' => $cartItem['image'],
                     'quantity' => $cartItem['quantity'],
                     'prize' => $cartItem['prize'],
                     'total_price' => $itemTotal,
                 ];
                 // Insert item data into the 'purchase_items' table
                 $this->db->table('purchase_items')->insert($itemData);
+
+                // Update product quantity in the 'prod' table
+
             }
             // Clear cart
             $this->Shopmodel_model->clearCart($userId);
@@ -97,8 +111,6 @@ class MainController extends Controller
         redirect('thankyou');
     }
 
-
-
     public function thankyou()
     {
         $this->call->view('thankyou');
@@ -107,6 +119,9 @@ class MainController extends Controller
     public function contact()
     {
         if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
+        }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
         $userId = $this->session->userdata('user_id');
@@ -120,6 +135,9 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
         $userId = $this->session->userdata('user_id');
 
         $data['cart'] = $this->Shopmodel_model->getcart($userId);
@@ -129,6 +147,9 @@ class MainController extends Controller
     public function view($id)
     {
         if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
+        }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
         $data['prod'] = $this->Shopmodel_model->getInfoById($id);
@@ -141,6 +162,9 @@ class MainController extends Controller
     public function shop()
     {
         if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
+        }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
         $data['prod'] = $this->Shopmodel_model->getInfo();
@@ -156,6 +180,9 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
 
         $userId = $this->session->userdata('user_id');
 
@@ -167,6 +194,9 @@ class MainController extends Controller
     public function Ac($id)
     {
         if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
+        }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
             redirect('login');
         }
 
@@ -192,6 +222,9 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
 
         $userId = $this->session->userdata('user_id');
 
@@ -213,6 +246,9 @@ class MainController extends Controller
         if (!$this->session->userdata('IsLoggedIn')) {
             redirect('login');
         }
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
 
         if (isset($id)) {
             $this->db->table('cart')->where("id", $id)->delete();
@@ -222,7 +258,6 @@ class MainController extends Controller
             redirect('modify');
         }
     }
-
 
 }
 ?>
