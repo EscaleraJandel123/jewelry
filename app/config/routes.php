@@ -82,3 +82,5 @@ $router->post('/submitedit/(:num)', 'AdminController::submitedit');
 $router->get('/monthlySales', 'ChartsController::monthlySales');
 $router->get('/dailySales', 'ChartsController::dailySales');
 $router->get('/yearlySales', 'ChartsController::yearlySales');
+
+$router->get('/getid', 'MainController::getid');

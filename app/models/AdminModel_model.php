@@ -15,10 +15,6 @@ class AdminModel_model extends Model
     {
         return $this->db->table('prod')->where('id', $id)->get();
     }
-    // public function searchcat($id)
-    // {
-    //     return $this->db->table('cat')->where('id',$id)->get();
-    // }
 
     public function getSales()
     {
@@ -47,5 +43,6 @@ class AdminModel_model extends Model
 
             ');
     }
+    
 }
 ?>

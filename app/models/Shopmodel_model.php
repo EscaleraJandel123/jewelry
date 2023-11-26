@@ -5,10 +5,11 @@ class Shopmodel_model extends Model
 {
     public function getInfo()
     {
-        return $this->db->table('prod')->get_all();
-        // $this->db->table('table')->limit(10)->get_all();
-        // return $this->db->table('prod')->where('category', 'perlas')->order_by('id', 'ASC')->get_all();
-
+        return $this->db->table('prod')->where('quantity', '>', 0)->get_all();
+    }
+    public function getpurchase()
+    {
+        return $this->db->table('purchase_items')->get_all();
     }
     public function getCat()
     {
@@ -33,7 +34,8 @@ class Shopmodel_model extends Model
         return $this->db->table('cart')->where('user_id', $user_id)->get_all();
     }
 
-    public function insertPurchaseData($bind) {
+    public function insertPurchaseData($bind)
+    {
         return $this->db->table('purchase')->insert($bind);
     }
 
@@ -41,8 +43,19 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('cart')->where('user_id', $userId)->delete();
     }
+    public function updateProductQuantity($purchaseId)
+    {
+        // Get the purchase items for the given purchase_id
+        $items = $this->db->table('purchase_items')
+            ->where('purchase_id', $purchaseId)
+            ->get_all();
 
-  // Shopmodel_model.php
+        foreach ($items as $item) {
+            // Update the product quantity using a raw SQL query
+            $sql = "UPDATE prod SET quantity = quantity - ? WHERE id = ?";
+            $this->db->raw($sql, [$item['quantity'], $item['prod_id']]);
+        }
+    }
 
 }
 ?>
