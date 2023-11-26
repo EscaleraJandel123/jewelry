@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 26, 2023 at 11:21 AM
+-- Generation Time: Nov 26, 2023 at 02:20 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -29,19 +29,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart` (
   `id` int NOT NULL,
+  `prod_id` int NOT NULL,
   `user_id` int NOT NULL,
   `name` varchar(50) NOT NULL,
   `image` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `quantity` int NOT NULL DEFAULT '1',
   `prize` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `name`, `image`, `quantity`, `prize`) VALUES
-(84, 24, 'sekjh', 'img_65623314954a0_371513315_1070895860934977_6999226467756693299_n.jpg', 3, 120);
 
 -- --------------------------------------------------------
 
@@ -85,7 +79,7 @@ CREATE TABLE `prod` (
 --
 
 INSERT INTO `prod` (`id`, `name`, `image`, `description`, `date`, `category`, `quantity`, `prize`) VALUES
-(55, 'sekjh', 'img_6562a9cae6f0e_3.jpg', '123', '2023-11-26 02:13:30', 'Necklace', 20, 12);
+(58, 'testing', 'img_656350ee960eb_4.jpg', '123', '2023-11-26 14:06:38', 'Diamond', 1, 1200);
 
 -- --------------------------------------------------------
 
@@ -136,12 +130,42 @@ CREATE TABLE `purchase` (
 --
 
 INSERT INTO `purchase` (`id`, `user_id`, `firstName`, `lastName`, `email`, `number`, `street`, `barangay`, `city`, `zip`, `order_at`) VALUES
-(170, 23, '', '', '', '', '', '', '', '', '2023-11-26 01:58:43'),
-(171, 23, '', '', '', '', '', '', '', '', '2023-11-26 02:02:19'),
-(172, 23, '', '', '', '', '', '', '', '', '2023-11-26 02:02:32'),
-(173, 23, '', '', '', '', '', '', '', '', '2023-11-26 02:03:55'),
-(174, 23, '', '', '', '', '', '', '', '', '2023-11-26 02:04:55'),
-(175, 23, '', '', '', '', '', '', '', '', '2023-11-26 02:14:14');
+(201, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:00:36'),
+(202, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:02:26'),
+(203, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:11:30'),
+(204, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:12:38'),
+(205, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:14:20'),
+(206, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:14:42'),
+(207, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:19:54'),
+(208, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:20:07'),
+(209, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:24:05'),
+(210, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:24:28'),
+(211, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:24:44'),
+(212, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:25:21'),
+(213, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:26:47'),
+(214, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:27:45'),
+(215, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:28:38'),
+(216, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:29:23'),
+(217, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:47:07'),
+(218, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:49:41'),
+(219, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:50:40'),
+(220, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:54:40'),
+(221, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:56:01'),
+(222, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:08'),
+(223, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:10'),
+(224, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:11'),
+(225, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:11'),
+(226, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:12'),
+(227, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:12'),
+(228, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:13'),
+(229, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:13'),
+(230, 23, '', '', '', '', '', '', '', '', '2023-11-26 13:57:39'),
+(231, 23, '', '', '', '', '', '', '', '', '2023-11-26 14:00:37'),
+(232, 23, '', '', '', '', '', '', '', '', '2023-11-26 14:02:28'),
+(233, 23, '', '', '', '', '', '', '', '', '2023-11-26 14:02:40'),
+(234, 23, '', '', '', '', '', '', '', '', '2023-11-26 14:05:53'),
+(235, 23, '', '', '', '', '', '', '', '', '2023-11-26 14:06:55'),
+(236, 23, '', '', '', '', '', '', '', '', '2023-11-26 14:15:45');
 
 -- --------------------------------------------------------
 
@@ -159,15 +183,17 @@ CREATE TABLE `purchase_items` (
   `quantity` int DEFAULT NULL,
   `prize` decimal(10,2) DEFAULT NULL,
   `total_price` decimal(10,2) DEFAULT NULL,
-  `order_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `order_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `prod_id` int DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `purchase_items`
 --
 
-INSERT INTO `purchase_items` (`id`, `purchase_id`, `Item_image`, `Item_name`, `CustomerId`, `Customer`, `quantity`, `prize`, `total_price`, `order_at`) VALUES
-(153, 175, 'img_6562a9cae6f0e_3.jpg', 'sekjh', 23, ' ', 20, '12.00', '240.00', '2023-11-26 02:14:14');
+INSERT INTO `purchase_items` (`id`, `purchase_id`, `Item_image`, `Item_name`, `CustomerId`, `Customer`, `quantity`, `prize`, `total_price`, `order_at`, `prod_id`) VALUES
+(200, 236, 'img_656350ee960eb_4.jpg', 'testing', 23, ' ', 2, '1200.00', '2400.00', '2023-11-26 14:15:45', 58),
+(201, 236, 'img_656350ee960eb_4.jpg', 'testing', 23, ' ', 2, '1200.00', '2400.00', '2023-11-26 14:15:45', 58);
 
 -- --------------------------------------------------------
 
@@ -248,7 +274,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=125;
 
 --
 -- AUTO_INCREMENT for table `cat`
@@ -260,7 +286,7 @@ ALTER TABLE `cat`
 -- AUTO_INCREMENT for table `prod`
 --
 ALTER TABLE `prod`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -272,13 +298,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=176;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=237;
 
 --
 -- AUTO_INCREMENT for table `purchase_items`
 --
 ALTER TABLE `purchase_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
 
 --
 -- AUTO_INCREMENT for table `users`
