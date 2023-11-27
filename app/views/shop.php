@@ -25,6 +25,17 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="<?php echo BASE_URL . PUBLIC_DIR . '/css/style.css' ?>" rel="stylesheet">
 </head>
+<style>
+    .card-header.product-img {
+        height: 400px; /* Set a fixed height for the card header */
+    }
+
+    .card-header.product-img img {
+        object-fit: cover; /* Choose 'cover', 'contain', 'fill', etc., based on your preference */
+        width: 100%;
+        height: 100%;
+    }
+</style>
 
 <body>
     <!-- Topbar Start -->
@@ -67,7 +78,7 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                
+
             </div>
             <div class="col-lg-3 col-6 text-right">
                 <a href="" class="btn border">
@@ -76,7 +87,9 @@
                 </a>
                 <a href="/cart" class="btn border">
                     <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge"><?php echo $cartItemCount; ?></span>
+                    <span class="badge">
+                        <?php echo $cartItemCount; ?>
+                    </span>
                 </a>
             </div>
         </div>
@@ -87,7 +100,7 @@
     <!-- Navbar Start -->
     <div class="container-fluid">
         <div class="row border-top px-xl-5">
-           
+
             <div class="col-lg-12">
                 <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                     <a href="" class="text-decoration-none d-block d-lg-none">
@@ -102,18 +115,10 @@
                             <a href="/" class="nav-item nav-link">Home</a>
                             <a href="/shop" class="nav-item nav-link active">Shop</a>
                             <a href="/detail" class="nav-item nav-link">Shop Detail</a>
-
-                            <!-- <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                                <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="/cart" class="dropdown-item">Shopping Cart</a>
-                                    <a href="/checkout" class="dropdown-item">Checkout</a>
-                                </div>
-                            </div> -->
                             <a href="/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                        <a href="/logout" class="nav-item nav-link">Logout</a>
+                            <a href="/logout" class="nav-item nav-link">Logout</a>
                         </div>
                     </div>
                 </nav>
@@ -136,86 +141,20 @@
     </div>
     <!-- Page Header End -->
 
-
     <!-- Shop Start -->
     <div class="container-fluid pt-5">
         <div class="row px-xl-5">
-            <!-- Shop Sidebar Start -->
-            <div class="col-lg-3 col-md-12">
-                <!-- Price Start -->
-                <div class="border-bottom mb-4 pb-4">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by price</h5>
-                    <form>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">All Price</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="custom-control-label" for="price-1">$0 - $100</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2">
-                            <label class="custom-control-label" for="price-2">$100 - $200</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3">
-                            <label class="custom-control-label" for="price-3">$200 - $300</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4">
-                            <label class="custom-control-label" for="price-4">$300 - $400</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5">
-                            <label class="custom-control-label" for="price-5">$400 - $500</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
-                </div>
-                <!-- Price End -->
-
-                <!-- Color Start -->
-
-                <!-- Color End -->
-
-                <!-- Size Start -->
-                <div class="mb-5">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by Category</h5>
-                    <form>
-                        <div
-                            class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="size-all">
-                            <label class="custom-control-label" for="size-all">All Size</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                    </form>
-                </div>
-                <!-- Size End -->
-            </div>
-            <!-- Shop Sidebar End -->
-            <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
+                            <form action="<?= BASE_URL . 'search'; ?>" method="get">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
+                                    <input type="text" class="form-control" name="search" placeholder="Search by name">
                                     <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
+                                        <button type="submit" class="btn btn-primary">
                                             <i class="fa fa-search"></i>
-                                        </span>
+                                        </button>
                                     </div>
                                 </div>
                             </form>
@@ -233,34 +172,45 @@
                         </div>
                     </div>
 
-                    <?php foreach ($prod as $pr): ?>
-                        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                            <div class="card product-item border-0 mb-4 h-100">
-                                <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"><img class="img-fluid w-100" src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt=""></a>
-                                </div>
-                                <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                    <h6 class="text-truncate mb-3">
-                                        <?= $pr['name'] ?>
-                                    </h6>
-                                    <div class="d-flex justify-content-center">
-                                        <h6>$
-                                            <?= $pr['prize'] ?>
-                                        </h6>
-                                        <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
-                                    </div>
-                                </div>
-                                <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"
-                                        class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                                        Detail</a>
-                                    <a href="<?php echo BASE_URL . 'Acc/' . $pr['id']; ?>"
-                                        class="btn btn-sm text-dark p-0"><i
-                                            class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                                </div>
+                    <?php if (empty($prod)): ?>
+                        <div class="col-12 pb-1">
+                            <div class="alert alert-info mt-3" role="alert">
+                                No items found.
                             </div>
                         </div>
-                    <?php endforeach ?>
+                    <?php else: ?>
+                        
+                        <?php foreach ($prod as $pr): ?>
+                            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
+                                <div class="card product-item border-0 mb-4 h-100">
+                                    <div
+                                        class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                                        <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"><img class="img-fluid w-100"
+                                                src="<?= BASE_URL . 'uploads/' . $pr['image'] ?>" alt=""></a>
+                                    </div>
+                                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                                        <h6 class="text-truncate mb-3">
+                                            <?= $pr['name'] ?>
+                                        </h6>
+                                        <div class="d-flex justify-content-center">
+                                            <h6>$
+                                                <?= $pr['prize'] ?>
+                                            </h6>
+                                            <!-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> -->
+                                        </div>
+                                    </div>
+                                    <div class="card-footer d-flex justify-content-between bg-light border">
+                                        <a href="<?php echo BASE_URL . 'view/' . $pr['id']; ?>"
+                                            class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
+                                            Detail</a>
+                                        <a href="<?php echo BASE_URL . 'Acc/' . $pr['id']; ?>"
+                                            class="btn btn-sm text-dark p-0"><i
+                                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif ?>
 
                     <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">

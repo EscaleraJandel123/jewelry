@@ -47,6 +47,8 @@ defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 // $router->get('/', 'Welcome::index');
 $router->get('/', 'MainController::index');
 $router->get('/shop', 'MainController::shop');
+$router->get('/search', 'MainController::search');
+
 $router->get('/cart', 'MainController::cart');
 $router->get('/detail', 'MainController::detail');
 $router->get('/checkout', 'MainController::checkout');
@@ -83,4 +85,3 @@ $router->get('/monthlySales', 'ChartsController::monthlySales');
 $router->get('/dailySales', 'ChartsController::dailySales');
 $router->get('/yearlySales', 'ChartsController::yearlySales');
 
-$router->get('/getid', 'MainController::getid');

@@ -15,9 +15,13 @@ class Shopmodel_model extends Model
     {
         return $this->db->table('cat')->get_all();
     }
-    public function searchInfo($id)
+    public function searchInfo($searchTerm)
     {
-        return $this->db->table('prod')->where('id', $id)->get();
+        // return $this->db->table('prod')->where('id', $id)->get();
+        return $this->db->table('prod')
+        ->like('name', $searchTerm) // Assuming 'name' is the column you want to search
+        ->where('quantity', '>', 0)
+        ->get_all();
     }
 
     public function getInfoById($id)

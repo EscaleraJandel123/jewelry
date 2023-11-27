@@ -148,15 +148,15 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>First Name</label>
-                                <input class="form-control" type="text" name="firstName" placeholder="John">
+                                <input class="form-control" type="text" name="firstName" placeholder="John" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Last Name</label>
-                                <input class="form-control" type="text" name="lastName" placeholder="Doe">
+                                <input class="form-control" type="text" name="lastName" placeholder="Doe" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
-                                <input class="form-control" type="text" name="email" placeholder="example@email.com">
+                                <input class="form-control" type="text" name="email" placeholder="example@email.com" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Mobile No</label>
@@ -164,19 +164,19 @@
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Street</label>
-                                <input class="form-control" type="text" name="street" placeholder="Street">
+                                <input class="form-control" type="text" name="street" placeholder="Street" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Barangay</label>
-                                <input class="form-control" type="text" name="barangay" placeholder="Barangay">
+                                <input class="form-control" type="text" name="barangay" placeholder="Barangay" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>City</label>
-                                <input class="form-control" type="text" name="city" placeholder="City">
+                                <input class="form-control" type="text" name="city" placeholder="City" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>ZIP Code</label>
-                                <input class="form-control" type="text" name="zip" placeholder="123">
+                                <input class="form-control" type="text" name="zip" placeholder="123" required>
                             </div>
                         </div>
                 </div>

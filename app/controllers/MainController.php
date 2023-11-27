@@ -30,74 +30,74 @@ class MainController extends Controller
         $this->call->view('checkout', $data);
     }
     public function purchase()
-{
-    // Check if the user is logged in
-    if (!$this->session->userdata('IsLoggedIn')) {
-        redirect('login');
-    }
-
-    if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
-        redirect('login');
-    }
-
-    // Get user information from the form
-    $userId = $this->session->userdata('user_id');
-    $firstName = $this->io->post('firstName');
-    $lastName = $this->io->post('lastName');
-    $email = $this->io->post('email');
-    $number = $this->io->post('number');
-    $street = $this->io->post('street');
-    $barangay = $this->io->post('barangay');
-    $city = $this->io->post('city');
-    $zip = $this->io->post('zip');
-
-    // Save purchase details
-    $purchaseData = [
-        'user_id' => $userId,
-        'firstName' => $firstName,
-        'lastName' => $lastName,
-        'email' => $email,
-        'number' => $number,
-        'street' => $street,
-        'barangay' => $barangay,
-        'city' => $city,
-        'zip' => $zip,
-    ];
-
-    // model to insert purchase data into the database
-    $purchaseId = $this->Shopmodel_model->insertPurchaseData($purchaseData);
-    echo "Purchase ID: $purchaseId";
-
-    // Retrieve cart data from the session
-    $data['cart'] = $this->Shopmodel_model->getcart($userId);
-
-    if (!empty($data['cart'])) {
-        foreach ($data['cart'] as $cartItem) {
-            $itemTotal = $cartItem['prize'] * $cartItem['quantity'];
-            $itemData = [
-                'Customer' => $firstName . ' ' . $lastName,
-                'CustomerId' => $userId,
-                'purchase_id' => $purchaseId,
-                'prod_id' => $cartItem['prod_id'],
-                'Item_name' => $cartItem['name'],
-                'Item_image' => $cartItem['image'],
-                'quantity' => $cartItem['quantity'],
-                'prize' => $cartItem['prize'],
-                'total_price' => $itemTotal,
-            ];
-            // Insert item data into the 'purchase_items' table
-            $this->db->table('purchase_items')->insert($itemData);
+    {
+        // Check if the user is logged in
+        if (!$this->session->userdata('IsLoggedIn')) {
+            redirect('login');
         }
 
-        // Update product quantities
-        $this->Shopmodel_model->updateProductQuantity($purchaseId);
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
 
-        // Clear cart
-        $this->Shopmodel_model->clearCart($userId);
+        // Get user information from the form
+        $userId = $this->session->userdata('user_id');
+        $firstName = $this->io->post('firstName');
+        $lastName = $this->io->post('lastName');
+        $email = $this->io->post('email');
+        $number = $this->io->post('number');
+        $street = $this->io->post('street');
+        $barangay = $this->io->post('barangay');
+        $city = $this->io->post('city');
+        $zip = $this->io->post('zip');
+
+        // Save purchase details
+        $purchaseData = [
+            'user_id' => $userId,
+            'firstName' => $firstName,
+            'lastName' => $lastName,
+            'email' => $email,
+            'number' => $number,
+            'street' => $street,
+            'barangay' => $barangay,
+            'city' => $city,
+            'zip' => $zip,
+        ];
+
+        // model to insert purchase data into the database
+        $purchaseId = $this->Shopmodel_model->insertPurchaseData($purchaseData);
+        echo "Purchase ID: $purchaseId";
+
+        // Retrieve cart data from the session
+        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+
+        if (!empty($data['cart'])) {
+            foreach ($data['cart'] as $cartItem) {
+                $itemTotal = $cartItem['prize'] * $cartItem['quantity'];
+                $itemData = [
+                    'Customer' => $firstName . ' ' . $lastName,
+                    'CustomerId' => $userId,
+                    'purchase_id' => $purchaseId,
+                    'prod_id' => $cartItem['prod_id'],
+                    'Item_name' => $cartItem['name'],
+                    'Item_image' => $cartItem['image'],
+                    'quantity' => $cartItem['quantity'],
+                    'prize' => $cartItem['prize'],
+                    'total_price' => $itemTotal,
+                ];
+                // Insert item data into the 'purchase_items' table
+                $this->db->table('purchase_items')->insert($itemData);
+            }
+
+            // Update product quantities
+            $this->Shopmodel_model->updateProductQuantity($purchaseId);
+
+            // Clear cart
+            $this->Shopmodel_model->clearCart($userId);
+        }
+
+        redirect('thankyou');
     }
-
-    redirect('thankyou');
-}
 
     public function thankyou()
     {
@@ -150,6 +150,23 @@ class MainController extends Controller
         $data['cartItemCount'] = count($data['cart']);
         $this->call->view('shop', $data);
     }
+    
+    public function search()
+    {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
+
+        $searchTerm = $this->io->get('search'); // Get the search term from the query string
+        $data['prod'] = $this->Shopmodel_model->searchInfo($searchTerm);
+
+        $userId = $this->session->userdata('user_id');
+        $data['cart'] = $this->Shopmodel_model->getcart($userId);
+        $data['cartItemCount'] = count($data['cart']);
+
+        $this->call->view('shop', $data);
+    }
+
 
     public function cart()
     {
