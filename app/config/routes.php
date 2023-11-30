@@ -61,12 +61,15 @@ $router->get('/cartdel/(:num)', 'MainController::cartdel');
 $router->post('/purchase', 'MainController::purchase');
 $router->get('/thankyou', 'MainController::thankyou');
 
+$router->get('/profile', 'MainController::profile');
+$router->post('/profUp', 'MainController::profUp');
 $router->get('/login', 'UserController::login');
 $router->get('/logout', 'UserController::logout');
 
 $router->get('/register', 'UserController::register');
 $router->post('/create', 'UserController::create');
 $router->post('/auth', 'UserController::auth');
+
 
 $router->get('/dashboard', 'AdminController::dashboard');
 $router->get('/products', 'AdminController::products');
@@ -76,7 +79,7 @@ $router->post('/save', 'AdminController::add');
 $router->post('/addcat', 'AdminController::addcat');
 $router->get('/delcat/(:num)', 'AdminController::delcat');
 
-$router->get('/delete/(:num)', 'AdminController::delete');
+// $router->get('/delete/(:num)', 'AdminController::delete');
 $router->get('/edit/(:num)', 'AdminController::edit');
 $router->post('/submitedit/(:num)', 'AdminController::submitedit');
 

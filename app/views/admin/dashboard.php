@@ -140,7 +140,7 @@
                     <?php foreach ($Topitems as $g): ?>
                       <tr>
                         <th scope="row"><a href="#"><img src="<?= BASE_URL . 'uploads/' . $g['max_image'] ?>" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold"><?= $g['Item_name'] ?></a></td>
+                        <td><?= $g['Item_name'] ?></td>
                         <td>$<?= $g['max_prize'] ?></td>
                         <td class="fw-bold"><?= $g['total_quantity'] ?></td>
                         <td>$<?= $g['total_sales'] ?></td>

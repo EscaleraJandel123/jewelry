@@ -27,11 +27,13 @@
 </head>
 <style>
     .card-header.product-img {
-        height: 400px; /* Set a fixed height for the card header */
+        height: 400px;
+        /* Set a fixed height for the card header */
     }
 
     .card-header.product-img img {
-        object-fit: cover; /* Choose 'cover', 'contain', 'fill', etc., based on your preference */
+        object-fit: cover;
+        /* Choose 'cover', 'contain', 'fill', etc., based on your preference */
         width: 100%;
         height: 100%;
     }
@@ -118,6 +120,7 @@
                             <a href="/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
+                        <a href="/profile" class="nav-item nav-link">Profile</a>
                             <a href="/logout" class="nav-item nav-link">Logout</a>
                         </div>
                     </div>
@@ -155,8 +158,13 @@
                                         <button type="submit" class="btn btn-primary">
                                             <i class="fa fa-search"></i>
                                         </button>
+
                                     </div>
+                                    <a href="/shop" class="btn btn-primary" onclick="location.reload(true)">
+                                    <i class="fas fa-sync-alt"></i>
+                                    </a>
                                 </div>
+                                
                             </form>
                             <div class="dropdown ml-4">
                                 <button class="btn border dropdown-toggle" type="button" id="triggerId"
@@ -179,7 +187,7 @@
                             </div>
                         </div>
                     <?php else: ?>
-                        
+
                         <?php foreach ($prod as $pr): ?>
                             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                                 <div class="card product-item border-0 mb-4 h-100">
@@ -212,7 +220,7 @@
                         <?php endforeach ?>
                     <?php endif ?>
 
-                    <div class="col-12 pb-1">
+                    <!-- <div class="col-12 pb-1">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mb-3">
                                 <li class="page-item disabled">
@@ -232,7 +240,7 @@
                                 </li>
                             </ul>
                         </nav>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <!-- Shop Product End -->

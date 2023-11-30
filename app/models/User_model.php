@@ -19,6 +19,11 @@ class User_model extends Model {
      {
          return $this->db->table('users')->where('id', $userId)->get();
      }
+     public function getcart($user_id)
+    {
+        return $this->db->table('cart')->where('user_id', $user_id)->get_all();
+    }
+
 
 }
 ?>

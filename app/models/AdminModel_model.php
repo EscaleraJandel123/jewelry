@@ -38,11 +38,12 @@ class AdminModel_model extends Model
     GROUP BY
         Item_name
     ORDER BY
-        total_sales DESC
+    total_quantity DESC
     LIMIT 10;
 
             ');
+        //Order by Items sold
     }
-    
+
 }
 ?>

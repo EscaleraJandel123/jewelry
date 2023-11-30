@@ -5,7 +5,7 @@
 
 <body>
 
-<?php echo include('chop/header.php'); ?>
+    <?php echo include('chop/header.php'); ?>
 
     <!-- ======= Sidebar ======= -->
     <?php echo include('chop/aside.php'); ?>
@@ -31,7 +31,7 @@
                                             <th scope="col">Category</th>
                                             <th scope="col">Quantity</th>
                                             <th scope="col">Image</th>
-                                            <th scope="col">Prize</th>
+                                            <th scope="col">Price</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -69,8 +69,6 @@
                                                 <td><a href="/edit/<?= $pr['id'] ?>" type="button"
                                                         class="btn btn-outline-warning">Edit</a>
                                                 </td>
-                                                <td><a href="/delete/<?= $pr['id'] ?>" type="button"
-                                                        class="btn btn-outline-danger">Delete</a>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
@@ -140,19 +138,27 @@
                                         <input type="text" class="form-control" id="floatingPrize" name="prize"
                                             placeholder="Prize"
                                             value="<?= (isset($edit['prize'])) ? $edit['prize'] : "" ?>" required>
-                                        <label for="floatingPrize">Prize</label>
+                                        <label for="floatingPrize">Price</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <label for="formFile" class="form-label">Upload Image</label>
                                     <input class="form-control" type="file" id="formFile" name="image"
-                                        onchange="previewImage()" required>
+                                        onchange="previewImage()">
                                 </div>
-                                <!-- Image Preview -->
-                                <div class="col-md-12" id="imagePreviewContainer" style="display: none;">
-                                    <img id="imagePreview" alt="Image Preview"
-                                        style="max-width: 300px; max-height: 300px;">
-                                </div>
+                                <?php if (isset($edit['image']) && !empty($edit['image'])): ?>
+                                    <div class="col-md-12" id="imagePreviewContainer" style="display: block;">
+                                        <img id="imagePreview" src="<?= BASE_URL . 'uploads/' . $edit['image'] ?>"
+                                            alt="Image Preview" style="max-width: 300px; max-height: 300px;">
+                                    </div>
+                                <?php else: ?>
+                                    <!-- Image Preview Container (hidden by default) -->
+                                    <div class="col-md-12" id="imagePreviewContainer" style="display: none;">
+                                        <img id="imagePreview" alt="Image Preview"
+                                            style="max-width: 300px; max-height: 300px;">
+                                    </div>
+                                <?php endif; ?>
+
 
                                 <!-- End Image Preview -->
                                 <div class="text-center">
@@ -170,20 +176,6 @@
         </section>
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </footer><!-- End Footer -->
 
     <?php echo include('chop/script.php'); ?>
     <script>

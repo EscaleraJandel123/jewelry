@@ -114,6 +114,7 @@
                             <a href="/contact" class="nav-item nav-link">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
+                            <a href="/profile" class="nav-item nav-link">Profile</a>
                             <a href="/logout" class="nav-item nav-link">Logout</a>
                         </div>
                     </div>
@@ -144,39 +145,27 @@
             <div class="col-lg-8">
                 <div class="mb-4">
                     <h4 class="font-weight-semi-bold mb-4">Billing Address</h4>
+                    <p>Please double Check before you place ordered</p>
                     <form action="/purchase" method="post">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>First Name</label>
-                                <input class="form-control" type="text" name="firstName" placeholder="John" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Last Name</label>
-                                <input class="form-control" type="text" name="lastName" placeholder="Doe" required>
+                                <input class="form-control" type="text" name="fullname"
+                                    value="<?= $users['fullname']; ?>" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>E-mail</label>
-                                <input class="form-control" type="text" name="email" placeholder="example@email.com" required>
+                                <input class="form-control" type="text" name="email" value="<?= $users['email']; ?>"
+                                    readonly>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <label>Complete Address</label>
+                                <input class="form-control" type="text" name="compAdd"
+                                    value="<?= $users['compAdd']; ?>" required>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Mobile No</label>
-                                <input class="form-control" type="text" name="number" placeholder="+123 456 789">
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Street</label>
-                                <input class="form-control" type="text" name="street" placeholder="Street" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>Barangay</label>
-                                <input class="form-control" type="text" name="barangay" placeholder="Barangay" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>City</label>
-                                <input class="form-control" type="text" name="city" placeholder="City" required>
-                            </div>
-                            <div class="col-md-6 form-group">
-                                <label>ZIP Code</label>
-                                <input class="form-control" type="text" name="zip" placeholder="123" required>
+                                <input class="form-control" type="text" name="number" value="<?= $users['number']; ?>" required>
                             </div>
                         </div>
                 </div>
@@ -222,7 +211,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <div class="custom-control custom-radio">
-                                    <input type="radio" class="custom-control-input" name="payment" id="paypal">
+                                    <input type="radio" class="custom-control-input" name="payment" id="paypal" value="paypal">
                                     <label class="custom-control-label" for="paypal">Paypal</label>
                                 </div>
                             </div>

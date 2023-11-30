@@ -108,6 +108,7 @@
                             <a href="/contact" class="nav-item nav-link active">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
+                        <a href="/profile" class="nav-item nav-link">Profile</a>
                         <a href="/logout" class="nav-item nav-link">Logout</a>
                         </div>
                     </div>

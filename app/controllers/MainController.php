@@ -26,6 +26,7 @@ class MainController extends Controller
 
         $data['cart'] = $this->Shopmodel_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
+        $data['users'] = $this->User_model->getUserById($userId);
 
         $this->call->view('checkout', $data);
     }
@@ -42,26 +43,21 @@ class MainController extends Controller
 
         // Get user information from the form
         $userId = $this->session->userdata('user_id');
-        $firstName = $this->io->post('firstName');
-        $lastName = $this->io->post('lastName');
+        $fullname = $this->io->post('fullname');
         $email = $this->io->post('email');
         $number = $this->io->post('number');
-        $street = $this->io->post('street');
-        $barangay = $this->io->post('barangay');
-        $city = $this->io->post('city');
-        $zip = $this->io->post('zip');
+        $compAdd = $this->io->post('compAdd');
+        $payment = isset($_POST['payment']) ? $this->io->post('payment') : '';
 
         // Save purchase details
         $purchaseData = [
             'user_id' => $userId,
-            'firstName' => $firstName,
-            'lastName' => $lastName,
+            'fullname' => $fullname,
             'email' => $email,
             'number' => $number,
-            'street' => $street,
-            'barangay' => $barangay,
-            'city' => $city,
-            'zip' => $zip,
+            'payment' => $payment,
+            'compAdd' => $compAdd,
+
         ];
 
         // model to insert purchase data into the database
@@ -75,7 +71,7 @@ class MainController extends Controller
             foreach ($data['cart'] as $cartItem) {
                 $itemTotal = $cartItem['prize'] * $cartItem['quantity'];
                 $itemData = [
-                    'Customer' => $firstName . ' ' . $lastName,
+                    'Customer' => $fullname,
                     'CustomerId' => $userId,
                     'purchase_id' => $purchaseId,
                     'prod_id' => $cartItem['prod_id'],
@@ -240,6 +236,34 @@ class MainController extends Controller
             $_SESSION['delete'] = "FAILED";
             redirect('modify');
         }
+    }
+
+    public function profile()
+    {
+        $userId = $this->session->userdata('user_id');
+        $data['cart'] = $this->User_model->getcart($userId);
+        $data['cartItemCount'] = count($data['cart']);
+        
+        $data['purchase_items'] = $this->Shopmodel_model->getorder($userId);
+        $data['users'] = $this->User_model->getUserById($userId);
+        $this->call->view('profile',$data);
+    }
+    public function profUp()
+    {
+        
+        $userId = $this->session->userdata('user_id');
+        $data['users'] = $this->User_model->getUserById($userId);
+            $fullname = $this->io->post('fullname');
+            $number = $this->io->post('number');
+            $compAdd = $this->io->post('compAdd');
+            $data = [
+                "fullname" => $fullname,
+                "number" => $number,
+                "compAdd" => $compAdd,        
+            ];
+            // Update the product data in the database
+            $this->db->table('users')->where("id", $userId)->update($data);
+            redirect('profile');
     }
 
 }

@@ -60,6 +60,10 @@ class Shopmodel_model extends Model
             $this->db->raw($sql, [$item['quantity'], $item['prod_id']]);
         }
     }
+    public function getorder($userId)
+    {
+        return $this->db->table('purchase_items')->where('CustomerId', $userId)->get_all();
+    }    
 
 }
 ?>
