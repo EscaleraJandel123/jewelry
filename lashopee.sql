@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 30, 2023 at 02:10 AM
+-- Generation Time: Dec 05, 2023 at 01:15 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -36,6 +36,13 @@ CREATE TABLE `cart` (
   `quantity` int NOT NULL DEFAULT '1',
   `prize` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `prod_id`, `user_id`, `name`, `image`, `quantity`, `prize`) VALUES
+(137, 63, 29, 'Whispering Willow Pendant', 'img_656409b878ac8_pendamnt.jpg', 3, 30);
 
 -- --------------------------------------------------------
 
@@ -180,9 +187,9 @@ CREATE TABLE `users` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `role` varchar(50) NOT NULL DEFAULT 'user',
-  `fullname` varchar(255) NOT NULL,
-  `compAdd` varchar(255) NOT NULL,
-  `number` varchar(255) NOT NULL
+  `fullname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `compAdd` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -194,7 +201,8 @@ INSERT INTO `users` (`id`, `email`, `password`, `role`, `fullname`, `compAdd`, `
 (24, 'alejandrogino950@gmail.com', '$2y$10$adUGqOXybvPjMFQmHufIPO0uh9BIQi4nDwFsqAwBPD3oJwkiIzNjm', 'user', 'Alejandro Gino', 'Lumangbayan Calapan City', '09366581432'),
 (25, 'admin@gmail.com', '$2y$10$HOWOnXRztFtEB12saZdGuOrpaV5DgyF.bie8iQtxn83B.LrJ7XM76', 'admin', '', '', ''),
 (26, 'jan@gmail.com', '$2y$10$xP.vyVcbdr/HRl/ILET/eeRhaVhgN.FNZigjjBhMSKX.qFBOwygQ.', 'user', '', '', ''),
-(28, 'jan@gmail.com', '$2y$10$BXj/iD.5DPLE6FOBQo3FF.wE7p.rr7QdELLV8kg/7KERPu6/MrtcS', 'user', '', '', '');
+(28, 'jan@gmail.com', '$2y$10$BXj/iD.5DPLE6FOBQo3FF.wE7p.rr7QdELLV8kg/7KERPu6/MrtcS', 'user', '', '', ''),
+(29, 'adley@gmail.com', '$2y$10$WeFoFplsh.76QAoCdikcWeZ8UG/4BYYkI5IwEDqHv3BvzEUSp4bqK', 'user', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -251,7 +259,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `cat`
@@ -287,7 +295,7 @@ ALTER TABLE `purchase_items`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
