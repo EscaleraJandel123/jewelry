@@ -21,10 +21,10 @@
     <section class="section dashboard">
       <div class="row">
         <!-- Left side columns -->
-        <div class="col-lg-10">
+        <div class="col-lg-12">
           <div class="row">
             <!-- daily sales -->
-            <div class="col-xxl-6 col-md-8">
+            <div class="col-xxl-4 col-md-12">
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">Sales <span>| Today</span></h5>
@@ -34,26 +34,15 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6 id="dailySales">Loading...</h6>
+                      <h6 id="dailySales"><?= '₱' . number_format($today, 2) ?></h6>
                     </div>
                   </div>
                 </div>
               </div>
             </div><!-- End Sales Card -->
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                // Fetch data from your CodeIgniter route
-                fetch('/dailySales')
-                  .then(response => response.json())
-                  .then(data => {
-                    // Display the total daily sales
-                    document.getElementById('dailySales').textContent = data.total_sales || 0;
-                  })
-                  .catch(error => console.error('Error fetching data:', error));
-              });
-            </script>
+
             <!-- Revenue Card -->
-            <div class="col-xxl-6 col-md-8">
+            <div class="col-xxl-4 col-md-12">
               <div class="card info-card sales-card">
                 <div class="card-body">
                   <h5 class="card-title">Sales <span>| Monthly</span></h5>
@@ -62,29 +51,36 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6 id="monthlySales">Loading...</h6>
+                      <h6 id="monthlySales"><?= '₱' . number_format($monthly, 2) ?></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-xxl-4 col-md-12">
+              <div class="card info-card sales-card">
+                <div class="card-body">
+                  <h5 class="card-title">Sales <span>| Over All</span></h5>
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                      <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6 id="monthlySales"><?= '₱' . number_format($overall_sales, 2) ?></h6>
                     </div>
                   </div>
                 </div>
               </div>
             </div><!-- End Sales Card -->
-            <script>
-              document.addEventListener("DOMContentLoaded", () => {
-                // Fetch data from your CodeIgniter route
-                fetch('/monthlySales')
-                  .then(response => response.json())
-                  .then(data => {
-                    // Display the total monthly sales
-                    const formattedMonthlySales = data.reduce((total, item) => total + parseFloat(item.total_sales), 0);
-                    document.getElementById('monthlySales').textContent = '$ ' + formattedMonthlySales.toFixed(2);
-                  })
-                  .catch(error => console.error('Error fetching data:', error));
-              });
-            </script>
+           
             <!-- Reports -->
             <div class="col-lg-12">
               <?php include('monthly.php') ?>
             </div>
+            <div class="col-12">
+            <?php include('monthLine.php') ?>
+            </div><!-- End Reports -->
             <!-- Recent Sales -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
@@ -102,21 +98,32 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($purchase_items as $g): ?>
-                      <tr>
-                        <th scope="row"><?= $g['purchase_id'] ?></th>
-                        <td><?= $g['Customer'] ?></td>
-                        <td><?= $g['Item_name'] ?></td>
-                        <td>$<?= $g['quantity'] ?></td>
-                        <td>$<?= $g['total_price'] ?></td>
-                        <td><?= $g['order_at'] ?></td>
-                      </tr>
+                      <?php foreach ($purchase_items as $g): ?>
+                        <tr>
+                          <th scope="row">
+                            <?= $g['purchase_id'] ?>
+                          </th>
+                          <td>
+                            <?= $g['Customer'] ?>
+                          </td>
+                          <td>
+                            <?= $g['Item_name'] ?>
+                          </td>
+                          <td>
+                            <?= $g['quantity'] ?>
+                          </td>
+                          <td>₱
+                            <?= $g['total_price'] ?>
+                          </td>
+                          <td>
+                          <?= date('M, d Y h:i:sA', strtotime($g['order_at'])) ?>
+
+                          </td>
+                        </tr>
                       <?php endforeach ?>
                     </tbody>
                   </table>
-
                 </div>
-
               </div>
             </div><!-- End Recent Sales -->
 
@@ -137,14 +144,23 @@
                       </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($Topitems as $g): ?>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="<?= BASE_URL . 'uploads/' . $g['max_image'] ?>" alt=""></a></th>
-                        <td><?= $g['Item_name'] ?></td>
-                        <td>$<?= $g['max_prize'] ?></td>
-                        <td class="fw-bold"><?= $g['total_quantity'] ?></td>
-                        <td>$<?= $g['total_sales'] ?></td>
-                      </tr>
+                      <?php foreach ($Topitems as $g): ?>
+                        <tr>
+                          <th scope="row"><a href="#"><img src="<?= BASE_URL . 'uploads/' . $g['max_image'] ?>"
+                                alt=""></a></th>
+                          <td>
+                            <?= $g['Item_name'] ?>
+                          </td>
+                          <td>₱
+                            <?= $g['max_prize'] ?>
+                          </td>
+                          <td class="fw-bold">
+                            <?= $g['total_quantity'] ?>
+                          </td>
+                          <td>₱
+                            <?= $g['total_sales'] ?>
+                          </td>
+                        </tr>
                       <?php endforeach ?>
                     </tbody>
                   </table>

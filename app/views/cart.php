@@ -152,13 +152,13 @@
                                     <img src="img/product-1.jpg" alt="" style="width: 50px;">
                                     <?= $c['name'] ?>
                                 </td>
-                                <td class="align-middle">$
+                                <td class="align-middle">₱
                                     <?= $c['prize'] ?>
                                 </td>
                                 <td class="align-middle">
                                     <?= $c['quantity'] ?>
                                 </td>
-                                <td class="align-middle">$
+                                <td class="align-middle">₱
                                     <?= $itemTotal ?>
                                 </td>
                                 <td class="align-middle">
@@ -171,14 +171,6 @@
                 </table>
             </div>
             <div class="col-lg-4">
-                <!-- <form class="mb-5" action="">
-                <div class="input-group">
-                    <input type="text" class="form-control p-4" placeholder="Coupon Code">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary">Apply Coupon</button>
-                    </div>
-                </div>
-            </form> -->
                 <div class="card border-secondary mb-5">
                     <div class="card-header bg-secondary border-0">
                         <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
@@ -187,16 +179,15 @@
 
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Subtotal</h6>
-                            <h6 class="font-weight-medium">$
+                            <h6 class="font-weight-medium">₱
                                 <?= $cartTotal ?>
                             </h6>
                         </div>
-
                     </div>
                     <div class="card-footer border-secondary bg-transparent">
                         <div class="d-flex justify-content-between mt-2">
                             <h5 class="font-weight-bold">Total</h5>
-                            <h5 class="font-weight-bold">$
+                            <h5 class="font-weight-bold">₱
                                 <?= $cartTotal ?>
                             </h5>
                         </div>

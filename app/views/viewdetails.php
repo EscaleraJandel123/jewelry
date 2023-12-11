@@ -162,7 +162,7 @@
                             </div>
                             <small class="pt-1">(50 Reviews)</small>
                         </div>
-                        <h3 class="font-weight-semi-bold mb-4">$
+                        <h3 class="font-weight-semi-bold mb-4">₱
                             <?= $prod['prize'] ?>
                         </h3>
                         <h4 class="font-weight-semi-bold mb-4">Stocks:

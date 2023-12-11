@@ -283,11 +283,9 @@
 
                                 </div>
 
-
                                 <div class="tab-pane fade pt-3" id="profile-change-password">
                                     <!-- Change Password Form -->
-                                    <form>
-
+                                    <form method="post" action="changePass">
                                         <div class="row mb-3">
                                             <label for="currentPassword"
                                                 class="col-md-4 col-lg-3 col-form-label">Current Password</label>
@@ -319,25 +317,17 @@
                                         <div class="text-center">
                                             <button type="submit" class="btn btn-primary">Change Password</button>
                                         </div>
-                                    </form><!-- End Change Password Form -->
-
+                                    </form>
+                                    <!-- End Change Password Form -->
                                 </div>
-
+                                <!-- Add this modal at the end of your HTML body -->
                             </div><!-- End Bordered Tabs -->
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </section>
-
-
     </div>
-    <!-- Contact End -->
-
-
-    <!-- Footer Start -->
     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
@@ -439,6 +429,7 @@
 
     <!-- Template Javascript -->
     <script src="<?php echo BASE_URL . PUBLIC_DIR . '/js/main.js' ?>"></script>
+    
     <?php include('admin/chop/script.php'); ?>
     </script>
 </body>

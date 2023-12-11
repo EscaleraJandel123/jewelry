@@ -40,7 +40,6 @@ class AdminModel_model extends Model
     ORDER BY
     total_quantity DESC
     LIMIT 10;
-
             ');
         //Order by Items sold
     }

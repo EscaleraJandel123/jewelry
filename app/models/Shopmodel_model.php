@@ -19,7 +19,7 @@ class Shopmodel_model extends Model
     {
         // return $this->db->table('prod')->where('id', $id)->get();
         return $this->db->table('prod')
-        ->like('name', $searchTerm) // Assuming 'name' is the column you want to search
+        ->like('name', $searchTerm)
         ->where('quantity', '>', 0)
         ->get_all();
     }

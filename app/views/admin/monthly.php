@@ -14,7 +14,9 @@
                         const salesData = data.map(item => item.total_sales);
 
                         // Creating Bar Chart
-                        echarts.init(document.querySelector("#barChart")).setOption({
+                        const chart = echarts.init(document.querySelector("#barChart"));
+
+                        chart.setOption({
                             xAxis: {
                                 type: 'category',
                                 data: years
@@ -25,7 +27,23 @@
                             series: [{
                                 data: salesData,
                                 type: 'bar'
-                            }]
+                            }],
+                            tooltip: {  // Enable tooltip
+                                trigger: 'axis',  // Display tooltip when hovering over the axis
+                                axisPointer: {  // Display tooltip line across the bar
+                                    type: 'shadow'
+                                },
+                                formatter: function(params) {  // Custom tooltip content
+                                    const year = params[0].name;
+                                    const sales = params[0].value;
+                                    return `Year: ${year}<br/>Total Sales: ${sales}`;
+                                }
+                            },
+                        });
+
+                        // Adjust the chart size when the window is resized
+                        window.addEventListener('resize', () => {
+                            chart.resize();
                         });
                     })
                     .catch(error => console.error('Error fetching data:', error));
@@ -34,5 +52,4 @@
         <!-- End Bar Chart -->
 
     </div>
-
 </div>

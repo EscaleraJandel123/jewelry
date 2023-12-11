@@ -60,7 +60,7 @@
                                                         style="max-width: 70px; cursor: pointer;">
                                                 </td>
                                                 <td>
-                                                    $
+                                                ₱
                                                     <?= $pr['prize'] ?>
                                                 </td>
                                                 <td>

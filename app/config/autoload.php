@@ -92,5 +92,5 @@ $autoload['helpers'] = array('url', 'file');
 |
 |	$autoload['model'] = array('model1_model', 'model2_model')
 */
-$autoload['models'] = array('Shopmodel_model' , 'AdminModel_model', 'User_model');
+$autoload['models'] = array('Shopmodel_model' , 'AdminModel_model', 'User_model', 'Reports_model');
 ?>

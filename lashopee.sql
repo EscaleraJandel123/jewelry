@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 05, 2023 at 01:15 AM
+-- Generation Time: Dec 10, 2023 at 07:03 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -91,9 +91,9 @@ CREATE TABLE `prod` (
 
 INSERT INTO `prod` (`id`, `name`, `image`, `description`, `date`, `category`, `quantity`, `prize`) VALUES
 (62, 'Celestial Cascade Earrings', 'img_6567e794252fb_modern-brilliance-asymmetrical-sapphire-wedding-ring-platinum_941561-1995.jpg', ' Earrings', '2023-11-27 03:13:27', 'Necklace', 100, 1200),
-(63, 'Whispering Willow Pendant', 'img_656409b878ac8_pendamnt.jpg', 'A nature-inspired pendant shaped like a graceful willow tree, with intricate branches and leaves that evoke a sense of serenity.', '2023-11-27 03:15:04', 'Necklace', 100, 30),
+(63, 'Whispering Willow Pendant', 'img_656409b878ac8_pendamnt.jpg', 'A nature-inspired pendant shaped like a graceful willow tree, with intricate branches and leaves that evoke a sense of serenity.', '2023-11-27 03:15:04', 'Necklace', 99, 1300),
 (65, 'Ethereal Eclipse Tiara', 'img_65640a760e8ea_tiara.avif', 'A regal tiara inspired by the celestial beauty of a solar eclipse, with delicate details that exude an ethereal and enchanting aura.', '2023-11-27 03:18:14', 'Necklace', 100, 1500),
-(66, 'Adorned Amethyst Pocket Watch', 'img_65640b0178bec_watch.jpeg', 'A vintage-style pocket watch adorned with a deep purple amethyst, adding a touch of sophistication to both casual and formal attire', '2023-11-27 03:20:33', 'Watch', 100, 1200),
+(66, 'Adorned Amethyst Pocket Watch', 'img_65640b0178bec_watch.jpeg', 'A vintage-style pocket watch adorned with a deep purple amethyst, adding a touch of sophistication to both casual and formal attire', '2023-11-27 03:20:33', 'Watch', 98, 1200),
 (67, 'Mystic Moonstone Ring', 'img_65640b99147ef_ring2.webp', 'A captivating ring featuring a shimmering moonstone, known for its ethereal glow, surrounded by intricate silver or gold detailing', '2023-11-27 03:22:28', 'Ring', 100, 1600),
 (68, 'Whirlwind Opal Cluster Ring', 'img_65640bd511805_ring 3.webp', 'A statement ring with a cluster of opals arranged in a swirling design, reminiscent of a mesmerizing whirlwind', '2023-11-27 03:24:05', 'Ring', 100, 1400),
 (69, 'Eternal Love Knot Ring', 'img_65640c0b51912_ring3.png', 'A symbolic ring with an eternal love knot design, representing the unbreakable bond and commitment between two individuals', '2023-11-27 03:24:59', 'Ring', 100, 1500),
@@ -144,7 +144,9 @@ INSERT INTO `purchase` (`id`, `user_id`, `fullname`, `email`, `number`, `compAdd
 (241, 23, 'Jandel L. Escalera', 'jandeleido@gmail.com', '09366581432', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '', '2023-11-28 10:08:31'),
 (242, 24, 'Alejandro Gino', 'alejandrogino950@gmail.com', '09366581432', 'Lumangbayan Calapan City', '', '2023-11-30 01:07:20'),
 (243, 23, 'Jandel L. Escalera', 'jandeleido@gmail.com', '09366581432', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '', '2023-11-30 01:26:39'),
-(244, 23, 'Jandel L. Escalera', 'jandeleido@gmail.com', '09366581432', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '', '2023-11-30 01:27:02');
+(244, 23, 'Jandel L. Escalera', 'jandeleido@gmail.com', '09366581432', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '', '2023-11-30 01:27:02'),
+(245, 23, 'Jandel L. Escalera', 'jandeleido@gmail.com', '09366581432', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', 'paypal', '2023-12-10 17:19:56'),
+(246, 23, 'Jandel L. Escalera', 'jandeleido@gmail.com', '09366581432', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '', '2023-12-10 17:39:00');
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,9 @@ CREATE TABLE `purchase_items` (
 INSERT INTO `purchase_items` (`id`, `purchase_id`, `Item_image`, `Item_name`, `CustomerId`, `Customer`, `quantity`, `prize`, `total_price`, `order_at`, `prod_id`, `status`) VALUES
 (208, 240, 'img_65640c0b51912_ring3.png', 'Eternal Love Knot Ring', 23, 'Jandel L. Escalera', 1, '1500.00', '1500.00', '2023-11-28 09:50:52', 69, 'Pending'),
 (209, 241, 'img_656409b878ac8_pendamnt.jpg', 'Whispering Willow Pendant', 23, 'Jandel L. Escalera', 10, '30.00', '300.00', '2023-11-28 10:08:31', 63, 'Pending'),
-(210, 242, 'img_65640b0178bec_watch.jpeg', 'Adorned Amethyst Pocket Watch', 24, 'Alejandro Gino', 3, '1200.00', '3600.00', '2023-11-30 01:07:20', 66, 'Pending');
+(210, 242, 'img_65640b0178bec_watch.jpeg', 'Adorned Amethyst Pocket Watch', 24, 'Alejandro Gino', 3, '1200.00', '3600.00', '2023-11-30 01:07:20', 66, 'Pending'),
+(214, 245, 'img_656409b878ac8_pendamnt.jpg', 'Whispering Willow Pendant', 23, 'Jandel L. Escalera', 1, '1300.00', '1300.00', '2023-12-10 17:19:56', 63, 'Pending'),
+(215, 246, 'img_65640b0178bec_watch.jpeg', 'Adorned Amethyst Pocket Watch', 23, 'Jandel L. Escalera', 2, '1200.00', '2400.00', '2023-12-10 17:39:00', 66, 'Pending');
 
 -- --------------------------------------------------------
 
@@ -197,7 +201,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `fullname`, `compAdd`, `number`) VALUES
-(23, 'jandeleido@gmail.com', '$2y$10$2AfLHVrLaP9FRXzs1qsHmunOHQ7UJh5wwauBlwTGG0PPBBlMUDhay', 'user', 'Jandel L. Escalera', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '09366581432'),
+(23, 'jandeleido@gmail.com', '$2y$10$xs4o8Cr/n19QKD1u/hi8fuqZmn5fgayzcFbjZ3/D3BhuqPnr9WKfS', 'user', 'Jandel L. Escalera', 'Sitio Pagkakaisa, Lumangbayan, Calapan City', '09366581432'),
 (24, 'alejandrogino950@gmail.com', '$2y$10$adUGqOXybvPjMFQmHufIPO0uh9BIQi4nDwFsqAwBPD3oJwkiIzNjm', 'user', 'Alejandro Gino', 'Lumangbayan Calapan City', '09366581432'),
 (25, 'admin@gmail.com', '$2y$10$HOWOnXRztFtEB12saZdGuOrpaV5DgyF.bie8iQtxn83B.LrJ7XM76', 'admin', '', '', ''),
 (26, 'jan@gmail.com', '$2y$10$xP.vyVcbdr/HRl/ILET/eeRhaVhgN.FNZigjjBhMSKX.qFBOwygQ.', 'user', '', '', ''),
@@ -259,7 +263,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=138;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- AUTO_INCREMENT for table `cat`
@@ -283,13 +287,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `purchase`
 --
 ALTER TABLE `purchase`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=245;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
 
 --
 -- AUTO_INCREMENT for table `purchase_items`
 --
 ALTER TABLE `purchase_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT for table `users`

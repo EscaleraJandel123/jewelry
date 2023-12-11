@@ -6,9 +6,9 @@ class MainController extends Controller
 
     public function index()
     {
-        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
-            redirect('login');
-        }
+        // if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+        //     redirect('login');
+        // }
 
         $userId = $this->session->userdata('user_id');
 
@@ -97,14 +97,17 @@ class MainController extends Controller
 
     public function thankyou()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
         $this->call->view('thankyou');
     }
 
     public function contact()
     {
-        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
-            redirect('login');
-        }
+        // if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+        //     redirect('login');
+        // }
         $userId = $this->session->userdata('user_id');
 
         $data['cart'] = $this->Shopmodel_model->getcart($userId);
@@ -113,9 +116,9 @@ class MainController extends Controller
     }
     public function detail()
     {
-        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
-            redirect('login');
-        }
+        // if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+        //     redirect('login');
+        // }
         $userId = $this->session->userdata('user_id');
 
         $data['cart'] = $this->Shopmodel_model->getcart($userId);
@@ -136,9 +139,9 @@ class MainController extends Controller
     }
     public function shop()
     {
-        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
-            redirect('login');
-        }
+        // if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+        //     redirect('login');
+        // }
         $data['prod'] = $this->Shopmodel_model->getInfo();
         $userId = $this->session->userdata('user_id');
 
@@ -240,6 +243,10 @@ class MainController extends Controller
 
     public function profile()
     {
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
+        
         $userId = $this->session->userdata('user_id');
         $data['cart'] = $this->User_model->getcart($userId);
         $data['cartItemCount'] = count($data['cart']);
@@ -248,9 +255,12 @@ class MainController extends Controller
         $data['users'] = $this->User_model->getUserById($userId);
         $this->call->view('profile',$data);
     }
+    
     public function profUp()
     {
-        
+        if (!$this->session->userdata('role') || $this->session->userdata('role') !== 'user') {
+            redirect('login');
+        }
         $userId = $this->session->userdata('user_id');
         $data['users'] = $this->User_model->getUserById($userId);
             $fullname = $this->io->post('fullname');
@@ -265,6 +275,5 @@ class MainController extends Controller
             $this->db->table('users')->where("id", $userId)->update($data);
             redirect('profile');
     }
-
 }
 ?>

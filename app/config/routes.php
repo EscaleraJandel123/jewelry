@@ -69,6 +69,7 @@ $router->get('/logout', 'UserController::logout');
 $router->get('/register', 'UserController::register');
 $router->post('/create', 'UserController::create');
 $router->post('/auth', 'UserController::auth');
+$router->post('/changePass', 'UserController::changePass');
 
 
 $router->get('/dashboard', 'AdminController::dashboard');
@@ -87,4 +88,6 @@ $router->post('/submitedit/(:num)', 'AdminController::submitedit');
 $router->get('/monthlySales', 'ChartsController::monthlySales');
 $router->get('/dailySales', 'ChartsController::dailySales');
 $router->get('/yearlySales', 'ChartsController::yearlySales');
-
+$router->get('/buwan', 'ChartsController::buwan');
+$router->get('/reports', 'ReportsController::reports');
+$router->post('/downloadReportsPdf', 'ReportsController::downloadReportsPdf');
